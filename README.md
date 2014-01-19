@@ -1,3 +1,3 @@
-Programming Assignment 1
+#Programming Assignment 1
 
-Brandeis University, Spring 2014, COSI 236 B - Software Engineering, lead by Professor Pito Salas
+Brandeis University, Spring 2014, COSI 236B - Software Engineering, lead by Professor Pito Salas
