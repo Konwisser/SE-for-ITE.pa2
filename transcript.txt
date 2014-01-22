@@ -1,0 +1,57 @@
+vagrant@vagrant-ubuntu-i386:/vagrant/pa1$ ruby movie_data_test.rb 
+Run options: 
+
+# Running tests:
+
+[1/6] TestMovieData#test_most_similar_on_real_data
+
+----------------------------------------------
+test_most_similar_on_real_data
+----------------------------------------------
+
+the most similar users to User(id: 1, ratings_count: 272) are:
+
+1.: User(id: 738, ratings_count: 148)
+2.: User(id: 69, ratings_count: 65)
+3.: User(id: 226, ratings_count: 50)
+4.: User(id: 785, ratings_count: 27)
+5.: User(id: 737, ratings_count: 33)
+6.: User(id: 177, ratings_count: 115)
+7.: User(id: 8, ratings_count: 59)
+8.: User(id: 247, ratings_count: 26)
+9.: User(id: 53, ratings_count: 28)
+10.: User(id: 700, ratings_count: 21)
+
+[4/6] TestMovieData#test_print_real_popularity_list                 
+
+----------------------------------------------
+test_print_real_popularity_list
+----------------------------------------------
+
+
+1.: Movie(id: 50, ratings_count: 583, popularity: 14.217035228647255)
+2.: Movie(id: 258, ratings_count: 509, popularity: 12.508046928253131)
+3.: Movie(id: 100, ratings_count: 508, popularity: 12.363106508700621)
+4.: Movie(id: 181, ratings_count: 507, popularity: 12.337527649887452)
+5.: Movie(id: 294, ratings_count: 485, popularity: 11.860377394874739)
+6.: Movie(id: 286, ratings_count: 481, popularity: 11.789491756939977)
+7.: Movie(id: 288, ratings_count: 478, popularity: 11.71786452552221)
+8.: Movie(id: 1, ratings_count: 452, popularity: 11.004446474802767)
+9.: Movie(id: 300, ratings_count: 431, popularity: 10.636853784943881)
+10.: Movie(id: 121, ratings_count: 429, popularity: 10.433666038801169)
+
+...
+
+1673.: Movie(id: 711, ratings_count: 1, popularity: 0.02346790986751026)
+1674.: Movie(id: 1507, ratings_count: 1, popularity: 0.02346659685297257)
+1675.: Movie(id: 1476, ratings_count: 1, popularity: 0.023232856523580037)
+1676.: Movie(id: 1614, ratings_count: 1, popularity: 0.023157589451671182)
+1677.: Movie(id: 1676, ratings_count: 1, popularity: 0.023100181121629364)
+1678.: Movie(id: 1486, ratings_count: 1, popularity: 0.023029661448959893)
+1679.: Movie(id: 1505, ratings_count: 1, popularity: 0.022954679226049213)
+1680.: Movie(id: 1619, ratings_count: 1, popularity: 0.02295417302662553)
+1681.: Movie(id: 1414, ratings_count: 1, popularity: 0.022947483739002884)
+1682.: Movie(id: 1482, ratings_count: 1, popularity: 0.022941697697775182)
+
+Finished tests in 14.479786s, 0.4144 tests/s, 2.0028 assertions/s.  
+6 tests, 29 assertions, 0 failures, 0 errors, 0 skips
