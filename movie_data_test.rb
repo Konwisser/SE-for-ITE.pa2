@@ -64,6 +64,17 @@ require "test/unit"
 # 		end
 # end
 
+class TestTime < Time
+	
+	def initialize(now_time)
+		@now_time = now_time
+	end
+
+	def now
+		@now_time
+	end
+end
+
 class TestMovieData < Test::Unit::TestCase
 	
 	U_DATA_FILE_PATH = "ml-100k/u.data"
@@ -117,15 +128,22 @@ class TestMovieData < Test::Unit::TestCase
 		movie_data = MovieData.new
 		movie_data.load_data(U_TEST_DATA_FILE_PATH)
 
-		movie_data.most_similar(1).each do |user_obj| 
+		list = movie_data.most_similar(1, 10)
+		assert_equal(10, list.length, "list should contain exactly 10 most similar users")
+
+		list.each do |user_obj| 
 			assert(user_obj.id > 10, "user_id #{user_obj.id} is < 11, shouldn't be in list")
 			assert(user_obj.id < 21, "user_id #{user_obj.id} is > 20, shouldn't be in list")
 		end
 	end
 
 	def test_most_similar_on_real_data
+		print_header("test_most_similar_on_real_data")
+
 		movie_data = MovieData.new
 		movie_data.load_data(U_DATA_FILE_PATH)
+
+		puts "the most similar users to #{movie_data.user(1).to_string} are:"
 
 		list = movie_data.most_similar(1)
 		print_list_to_string(list, 0, list.length - 1)
