@@ -91,14 +91,12 @@ class FileParser
 end
 
 class PopularityCalculator	
-	
-	POPUL_HALF_LIFE_YEARS = 3.0
-	POPUL_EXP_BASE = 0.5 ** (1.0 / POPUL_HALF_LIFE_YEARS)
 	SECONDS_IN_YEAR = 3600.0 * 24.0 * 365.25
-	private_constant :POPUL_HALF_LIFE_YEARS, :POPUL_EXP_BASE, :SECONDS_IN_YEAR
-
-	def initialize(clock = time)
+	
+	def initialize(clock = Time, popul_half_life_years = 3.0)
 		@clock = clock
+		@popul_half_life_years = popul_half_life_years
+		@popul_exp_base = 0.5 ** (1.0 / popul_half_life_years)
 	end
 
 	# returns a list of the provided movies, sorted descended by popularity
@@ -120,14 +118,15 @@ class PopularityCalculator
 			now_seconds = @clock.now.to_i
 			rating_seconds = rating_obj.timestamp.to_i
 			diff_years = (now_seconds - rating_seconds) / SECONDS_IN_YEAR
-			POPUL_EXP_BASE ** diff_years
+			@popul_exp_base ** diff_years
 		end
 end
 
 class MovieData
 
-	def initialize(clock = Time)
+	def initialize(clock = Time, popul_half_life_years = 3.0)
 		@clock = clock
+		@popul_half_life_years = popul_half_life_years
 		@popularity_desc_list = []
 	end
 
@@ -139,7 +138,7 @@ class MovieData
 
 		@max_user_distance = ((4 ** 2) * all_movies.length) ** 0.5
 
-		calculator = PopularityCalculator.new(@clock)
+		calculator = PopularityCalculator.new(@clock, @popul_half_life_years)
 		@popularity_desc_list = calculator.insert_popularities(all_movies)
 
 		line_count
