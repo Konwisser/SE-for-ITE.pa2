@@ -1,3 +1,6 @@
+# Author: Georg Konwisser
+# Email: software@konwisser.de
+
 class User
 	attr_reader :id
 

@@ -1,3 +1,6 @@
+# Author: Georg Konwisser
+# Email: software@konwisser.de
+
 require_relative 'movie_data'
 require "test/unit"
 
