@@ -21,7 +21,7 @@ class User
 		@movie_to_rating_num.keys
 	end
 
-	def to_string
-		"User(id: #{@id}, ratings_count: #{@movie_to_rating_num.keys.length})"
+	def to_s
+		"User(id: #{@id}, ratings: #{@movie_to_rating_num.keys.length})"
 	end
 end

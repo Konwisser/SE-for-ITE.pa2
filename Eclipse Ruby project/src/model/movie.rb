@@ -15,7 +15,7 @@ class Movie
 		@ratings << rating_obj
 	end
 
-	def to_string
-		"Movie(id: #{@id}, ratings_count: #{@ratings.length}, popularity: #{@popularity})"
+	def to_s
+		"Movie(id: #{@id}, ratings: #{@ratings.length}, popularity: #{@popularity})"
 	end
 end

@@ -23,7 +23,7 @@ class TestMovieData < Test::Unit::TestCase
 
 	def print_list_to_string(list, from_index, to_index)
 		puts ""
-		from_index.upto(to_index) {|index| puts "#{index + 1}.: #{list[index].to_string}"}
+		from_index.upto(to_index) {|index| puts "#{index + 1}.: #{list[index]}"}
 		puts ""
 	end
 
@@ -101,7 +101,7 @@ class TestMovieData < Test::Unit::TestCase
 		movie_data = MovieData.new
 		movie_data.load_data(U_DATA_FILE_PATH)
 
-		puts "the most similar users to #{movie_data.user(1).to_string} are:"
+		puts "the most similar users to #{movie_data.user(1)} are:"
 
 		list = movie_data.most_similar(1)
 		print_list_to_string(list, 0, list.length - 1)
