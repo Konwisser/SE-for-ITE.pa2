@@ -2,10 +2,10 @@
 # Email: software@konwisser.de
 
 require "test/unit"
+
 require_relative 'movie_data'
 
 class TestTime < Time
-	
 	def initialize(now_time)
 		@now_time = now_time
 	end
@@ -16,10 +16,9 @@ class TestTime < Time
 end
 
 class TestMovieData < Test::Unit::TestCase
-	
-	U_DATA_FILE_PATH = "../data/ml-100k/u.data"
-	U_TEST_DATA_FILE_PATH = "../data/u_test.data"
 
+	U_DATA_FILE_PATH = "data/ml-100k/u.data"
+	U_TEST_DATA_FILE_PATH = "data/u_test.data"
 	def print_header(header)
 		puts "", ""
 		puts "----------------------------------------------"
@@ -27,7 +26,7 @@ class TestMovieData < Test::Unit::TestCase
 		puts "----------------------------------------------"
 		puts ""
 	end
-	
+
 	def print_list_to_string(list, from_index, to_index)
 		puts ""
 		from_index.upto(to_index) {|index| puts "#{index + 1}.: #{list[index].to_string}"}
@@ -43,7 +42,7 @@ class TestMovieData < Test::Unit::TestCase
 
 	def test_popularity_calculation
 		pop_half_life_years = 3.0
-		
+
 		# set current time to 2014-01-01 00:00
 		test_time = TestTime.new(Time.new(2014))
 		movie_data = MovieData.new(test_time, pop_half_life_years)
