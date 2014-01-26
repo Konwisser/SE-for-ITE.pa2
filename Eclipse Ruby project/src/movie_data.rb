@@ -5,13 +5,15 @@ require_relative 'file_parser'
 require_relative 'popularity_calculator'
 
 class MovieData
-
-	def initialize(clock = Time, popul_half_life_years = 3.0)
-		@clock = clock
-		@popul_half_life_years = popul_half_life_years
+	
+	attr_writer(:time_class, :popul_half_life_years)
+	
+	def initialize()
+		@time_class = Time
+		@popul_half_life_years = 3.0
 		@popularity_desc_list = []
 	end
-
+	
 	def load_data(file_path)
 		parser = FileParser.new
 		line_count = parser.parse(file_path)
@@ -20,7 +22,7 @@ class MovieData
 
 		@max_user_distance = ((4 ** 2) * all_movies.length) ** 0.5
 
-		calculator = PopularityCalculator.new(@clock, @popul_half_life_years)
+		calculator = PopularityCalculator.new(@time_class, @popul_half_life_years)
 		@popularity_desc_list = calculator.insert_popularities(all_movies)
 
 		line_count

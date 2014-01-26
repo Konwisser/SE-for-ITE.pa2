@@ -4,33 +4,8 @@
 require "test/unit"
 
 require_relative 'movie_data'
-
-#compat mixin for Ruby 1.9.1 with test-unit gem in Eclipse (workaround for
-# missing variable initialization in eclipse thankfully taken from
-# https://bugs.eclipse.org/bugs/show_bug.cgi?id=323736)
-module Test
-	module Unit
-		module UI
-			SILENT = false
-		end
-
-		class AutoRunner
-			def output_level=(level)
-				self.runner_options[:output_level] = level
-			end
-		end
-	end
-end
-
-class TestTime < Time
-	def initialize(now_time)
-		@now_time = now_time
-	end
-
-	def now
-		@now_time
-	end
-end
+require_relative 'test/eclipse_test_case_workaround'
+require_relative 'test/test_time'
 
 class TestMovieData < Test::Unit::TestCase
 
@@ -59,10 +34,11 @@ class TestMovieData < Test::Unit::TestCase
 
 	def test_popularity_calculation
 		pop_half_life_years = 3.0
-
-		# set current time to 2014-01-01 00:00
-		test_time = TestTime.new(Time.new(2014))
-		movie_data = MovieData.new(test_time, pop_half_life_years)
+		
+		movie_data = MovieData.new
+		movie_data.popul_half_life_years = pop_half_life_years
+		# for test reasons: fix current time to 2014-01-01 00:00
+		movie_data.time_class = TestTime.new(Time.new(2014))
 		movie_data.load_data(U_TEST_DATA_FILE_PATH)
 
 		pop_base = 0.5 ** (1.0 / pop_half_life_years)
