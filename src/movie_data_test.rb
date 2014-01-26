@@ -2,7 +2,7 @@
 # Email: software@konwisser.de
 
 require "test/unit"
-require_relative '../src/movie_data'
+require_relative 'movie_data'
 
 class TestTime < Time
 	
