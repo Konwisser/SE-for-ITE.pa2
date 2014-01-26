@@ -5,18 +5,31 @@ require_relative 'file_parser'
 require_relative 'popularity_calculator'
 
 class MovieData
-	
+
+	DEFAULT_DIR_PATH = 'data/ml-100k'
+	DEFAULT_DATA_FILE = 'u.data'
+	BASE_FILE_EXTENSION = 'base'
+	TEST_FILE_EXTENSION = 'test'
+
 	attr_writer(:time_class, :popul_half_life_years)
-	
-	def initialize()
+	def initialize(data_dir_path = DEFAULT_DIR_PATH, base_test_pair = nil)
+		@data_dir_path = data_dir_path
+		@base_test_pair = base_test_pair
+
 		@time_class = Time
 		@popul_half_life_years = 3.0
 		@popularity_desc_list = []
 	end
-	
-	def load_data(file_path)
+
+	def complete_file_path(file_path)
+		return file_path if !file_path.nil?
+		return "#{DEFAULT_DIR_PATH}/#{DEFAULT_DATA_FILE}" if @base_test_pair.nil?
+		return "#{DEFAULT_DIR_PATH}/#{@base_test_pair}.#{BASE_FILE_EXTENSION}"
+	end
+
+	def load_data(file_path = nil)
 		parser = FileParser.new
-		line_count = parser.parse(file_path)
+		line_count = parser.parse(complete_file_path(file_path))
 		@id_to_user = parser.id_to_user
 		@id_to_movie = parser.id_to_movie
 
@@ -54,25 +67,26 @@ class MovieData
 	end
 
 	def similarity(user1_id, user2_id)
-		# With n movies in total regard each user as a point in n dimensional space. The user's 
-		# rating for a particular movie is the coordinate in the corresponding dimension. If the 
-		# user did not rate the movie at all, the algorithm assumes the neutral rating '3'.
-		# The distance between the two points resulting from two users is inverse proportional to
-		# the similarity of these two users.
-		
+		# With n movies in total regard each user as a point in n dimensional space. The
+		# user's rating for a particular movie is the coordinate in the corresponding
+		# dimension. If the user did not rate the movie at all, the algorithm assumes the
+		# neutral rating '3'. The distance between the two points resulting from two
+		# users is inverse proportional to the similarity of these two users.
+
 		user1, user2 = user(user1_id), user(user2_id)
 
 		square_sum = 0.0
-		
-		# performance tweak: iterating over the union of movies rated by one of the compared users
-		# (instead of iterating over all movies). Mathematically the movies which have not been
-		# rated by any of the two users would contribute the coordinate '3' for both and thus 0
-		# for the distance between the two resulting points. Therefore these movies can be skipped.
+
+		# performance tweak: iterating over the union of movies rated by one of the
+		# compared users (instead of iterating over all movies). Mathematically the
+		# movies which have not been rated by any of the two users would contribute the
+		# coordinate '3' for both and thus 0 for the distance between the two resulting
+		# points. Therefore these movies can be skipped.
 		movies_union = user1.rated_movies | user2.rated_movies
 		movies_union.each do |movie|
 			rating1 = user1.rating_num(movie) || 3.0
 			rating2 = user2.rating_num(movie) || 3.0
-			
+
 			square_sum += (rating2 - rating1) ** 2.0
 		end
 
