@@ -48,10 +48,6 @@ class MovieData
 		@id_to_movie.values
 	end
 
-	def user(user_id)
-		@id_to_user[user_id]
-	end
-
 	def movie(movie_id)
 		@id_to_movie[movie_id]
 	end
@@ -61,7 +57,7 @@ class MovieData
 	end
 
 	def popularity_list
-		# returns copy in order to avoid changes of this array
+		# returns a copy in order to avoid changes of this array
 		Array.new(@popularity_desc_list)
 	end
 
@@ -70,8 +66,16 @@ class MovieData
 		similarity(user1_id,user2_id)
 	end
 
-	def most_similar(user_id, top_n = 10)
+	def most_similar(user_id, min_sim = SimilarityCalculator::DEFAULT_MIN_SIMILARITY)
 		SimilarityCalculator.new(@id_to_user, all_movies.length).
-		most_similar(user_id, top_n)
+		most_similar(user_id, min_sim)
 	end
+
+	def rating(user_id, movie_id)
+		@id_to_user[user_id].rating_num(movie(movie_id)) || 0
+	end
+
+	#	def predict(user_id, movie_id)
+	#		rating(user_id, movie_id) ||
+	#	end
 end

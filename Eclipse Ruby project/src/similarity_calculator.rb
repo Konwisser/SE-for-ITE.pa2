@@ -1,5 +1,6 @@
 class SimilarityCalculator
-	
+
+	DEFAULT_MIN_SIMILARITY = 0.86
 	def initialize(id_to_user, movies_count)
 		@id_to_user = id_to_user
 		@max_user_distance = (((5 - 1) ** 2) * movies_count) ** 0.5
@@ -33,20 +34,15 @@ class SimilarityCalculator
 		1.0 - distance / @max_user_distance
 	end
 
-	def most_similar(user_id, top_n = 10)
-		# sort descending (biggest number -> most similar)
-		sorted_users = @id_to_user.values.sort do |a, b| 
-			similarity(user_id, b.id) <=> similarity(user_id, a.id)
-		end
-		
-		result = []
-
-		# sorted_users[0].id == user_id, starting with index == 1
-		1.upto(top_n) do |index|
-			break if index + 1 > sorted_users.length
-			result << sorted_users[index]
+	def most_similar(user_id, min_sim = DEFAULT_MIN_SIMILARITY)
+		filtered = {}
+		@id_to_user.values.each do |u|
+			sim = similarity(user_id, u.id)
+			filtered[u] = sim if u.id != user_id && sim >= min_sim
 		end
 
-		result
+		# sort the matching users in descending order regarding their requested
+		# similarity
+		filtered.each_key.sort {|a, b| filtered[b] <=> filtered[a]}
 	end
 end

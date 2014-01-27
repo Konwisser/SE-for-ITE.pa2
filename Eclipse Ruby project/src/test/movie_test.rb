@@ -12,7 +12,6 @@ class TestMovieData < Test::Unit::TestCase
 	DATA_DIR_PATH = "data/ml-100k"
 	U_DATA_FILE_PATH = "#{DATA_DIR_PATH}/u.data"
 	TEST_U_DATA_FILE_PATH = "data/u_test.data"
-	
 	def print_header(header)
 		puts "", ""
 		puts "----------------------------------------------"
@@ -33,20 +32,22 @@ class TestMovieData < Test::Unit::TestCase
 		assert_equal(33, movie_data.all_users.length)
 		assert_equal(6, movie_data.all_movies.length)
 	end
-	
+
 	def test_read_real_data_full
 		movie_data = MovieData.new(DATA_DIR_PATH)
 		assert_equal(100000, movie_data.load_data())
+		assert_equal(943, movie_data.all_users.length)
+		assert_equal(1682, movie_data.all_movies.length)
 	end
 
 	def test_read_real_data_base_test_pair
 		movie_data = MovieData.new(DATA_DIR_PATH, :u1)
 		assert_equal(80000, movie_data.load_data())
 	end
-	
+
 	def test_popularity_calculation
 		pop_half_life_years = 3.0
-		
+
 		movie_data = MovieData.new
 		movie_data.popul_half_life_years = pop_half_life_years
 		# for test reasons: fix current time to 2014-01-01 00:00
@@ -54,7 +55,7 @@ class TestMovieData < Test::Unit::TestCase
 		movie_data.load_data(TEST_U_DATA_FILE_PATH)
 
 		pop_base = 0.5 ** (1.0 / pop_half_life_years)
-		popularities = [1.0, 2.0, 3.0].map {|years| (pop_base ** years) * 3.0}
+		popularities = [1.0, 2.0, 3.0].map {|years| (pop_base ** years) * pop_half_life_years}
 
 		movies = [4, 5, 6].map {|movie_id| movie_data.movie(movie_id)}
 		[0, 1, 2].each {|i| assert_in_delta(popularities[i], movies[i].popularity, 0.001)}
@@ -86,7 +87,7 @@ class TestMovieData < Test::Unit::TestCase
 		movie_data = MovieData.new
 		movie_data.load_data(TEST_U_DATA_FILE_PATH)
 
-		list = movie_data.most_similar(1, 10)
+		list = movie_data.most_similar(1, 1.0)
 		assert_equal(10, list.length, "list should contain exactly 10 most similar users")
 
 		list.each do |user_obj|
@@ -101,9 +102,20 @@ class TestMovieData < Test::Unit::TestCase
 		movie_data = MovieData.new
 		movie_data.load_data(U_DATA_FILE_PATH)
 
-		puts "the most similar users to #{movie_data.user(1)} are:"
+		puts "the most similar users to the one with id=1 are:"
 
 		list = movie_data.most_similar(1)
 		print_list_to_string(list, 0, list.length - 1)
+	end
+
+	def test_rating
+		movie_data = MovieData.new
+		movie_data.load_data(TEST_U_DATA_FILE_PATH)
+
+		assert_equal(1, movie_data.rating(1, 1))
+		assert_equal(5, movie_data.rating(3, 2))
+		assert_equal(3, movie_data.rating(33, 6))
+			
+		assert_equal(0, movie_data.rating(3, 7))
 	end
 end
