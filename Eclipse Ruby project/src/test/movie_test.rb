@@ -94,6 +94,9 @@ class TestMovieData < Test::Unit::TestCase
 			assert(user_obj.id > 10, "user_id #{user_obj.id} is < 11, shouldn't be in list")
 			assert(user_obj.id < 21, "user_id #{user_obj.id} is > 20, shouldn't be in list")
 		end
+
+		assert_equal(0, movie_data.most_similar(2, 0.86).length)
+		assert_equal(11, movie_data.most_similar(2, 0.79).length)
 	end
 
 	def test_most_similar_on_real_data
@@ -102,7 +105,7 @@ class TestMovieData < Test::Unit::TestCase
 		movie_data = MovieData.new
 		movie_data.load_data(U_DATA_FILE_PATH)
 
-		puts "the most similar users to the one with id=1 are:"
+		puts "the most similar users to #{movie_data.user(1)} are:"
 
 		list = movie_data.most_similar(1)
 		print_list_to_string(list, 0, list.length - 1)
@@ -115,7 +118,21 @@ class TestMovieData < Test::Unit::TestCase
 		assert_equal(1, movie_data.rating(1, 1))
 		assert_equal(5, movie_data.rating(3, 2))
 		assert_equal(3, movie_data.rating(33, 6))
-			
+
 		assert_equal(0, movie_data.rating(3, 7))
+	end
+
+	def test_predict
+		movie_data = MovieData.new
+		movie_data.load_data(TEST_U_DATA_FILE_PATH)
+
+		assert_equal(5, movie_data.predict(3, 2), "must return stored rating exactly")
+
+		# no user has similarity >= 0.86 to user 2
+		assert_equal(3, movie_data.predict(2, 5), "must return uncertain prediction 3")
+
+		# there are 11 users with similarity >= 0.79 to user 2, all of them rated movie 3
+		# with "1" while user 2 has not rated movie 2 at all
+		assert_in_delta(1.0, movie_data.predict(2, 3, 0.79), 0.0001)
 	end
 end

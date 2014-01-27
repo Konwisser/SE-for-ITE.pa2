@@ -1,9 +1,11 @@
 class SimilarityCalculator
 
 	DEFAULT_MIN_SIMILARITY = 0.86
-	def initialize(id_to_user, movies_count)
+	
+	def initialize(id_to_user, movies_count, min_sim = DEFAULT_MIN_SIMILARITY)
 		@id_to_user = id_to_user
 		@max_user_distance = (((5 - 1) ** 2) * movies_count) ** 0.5
+		@min_sim = min_sim
 	end
 
 	def similarity(user1_id, user2_id)
@@ -34,7 +36,7 @@ class SimilarityCalculator
 		1.0 - distance / @max_user_distance
 	end
 
-	def most_similar(user_id, min_sim = DEFAULT_MIN_SIMILARITY)
+	def most_similar(user_id, min_sim = @min_sim)
 		filtered = {}
 		@id_to_user.values.each do |u|
 			sim = similarity(user_id, u.id)

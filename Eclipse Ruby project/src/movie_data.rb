@@ -4,6 +4,7 @@
 require_relative 'file_parser'
 require_relative 'popularity_calculator'
 require_relative 'similarity_calculator'
+require_relative 'rating_predicter'
 
 class MovieData
 
@@ -48,6 +49,10 @@ class MovieData
 		@id_to_movie.values
 	end
 
+	def user(user_id)
+		@id_to_user[user_id]
+	end
+
 	def movie(movie_id)
 		@id_to_movie[movie_id]
 	end
@@ -72,10 +77,11 @@ class MovieData
 	end
 
 	def rating(user_id, movie_id)
-		@id_to_user[user_id].rating_num(movie(movie_id)) || 0
+		user(user_id).rating_num(movie(movie_id)) || 0
 	end
 
-	#	def predict(user_id, movie_id)
-	#		rating(user_id, movie_id) ||
-	#	end
+	def predict(user_id, movie_id, min_sim = SimilarityCalculator::DEFAULT_MIN_SIMILARITY)
+		sim_calc = SimilarityCalculator.new(@id_to_user, all_movies.length, min_sim)
+		RatingPredicter.new(sim_calc).predict(user(user_id), movie(movie_id))
+	end
 end
