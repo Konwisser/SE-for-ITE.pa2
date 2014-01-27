@@ -6,42 +6,26 @@ require "test/unit"
 require_relative '../movie_data'
 require_relative 'eclipse_test_case_workaround'
 require_relative 'test_time'
+require_relative 'test_helper'
 
-class TestMovieData < Test::Unit::TestCase
-
-	DATA_DIR_PATH = "data/ml-100k"
-	U_DATA_FILE_PATH = "#{DATA_DIR_PATH}/u.data"
-	TEST_U_DATA_FILE_PATH = "data/u_test.data"
-	def print_header(header)
-		puts "", ""
-		puts "----------------------------------------------"
-		puts header
-		puts "----------------------------------------------"
-		puts ""
-	end
-
-	def print_list_to_string(list, from_index, to_index)
-		puts ""
-		from_index.upto(to_index) {|index| puts "#{index + 1}.: #{list[index]}"}
-		puts ""
-	end
+class MovieDataTest < Test::Unit::TestCase
 
 	def test_read_test_data
 		movie_data = MovieData.new
-		assert_equal(97, movie_data.load_data(TEST_U_DATA_FILE_PATH))
+		assert_equal(97, movie_data.load_data(TestHelper::TEST_U_DATA_FILE_PATH))
 		assert_equal(33, movie_data.all_users.length)
 		assert_equal(6, movie_data.all_movies.length)
 	end
 
 	def test_read_real_data_full
-		movie_data = MovieData.new(DATA_DIR_PATH)
+		movie_data = MovieData.new(TestHelper::DATA_DIR_PATH)
 		assert_equal(100000, movie_data.load_data())
 		assert_equal(943, movie_data.all_users.length)
 		assert_equal(1682, movie_data.all_movies.length)
 	end
 
 	def test_read_real_data_base_test_pair
-		movie_data = MovieData.new(DATA_DIR_PATH, :u1)
+		movie_data = MovieData.new(TestHelper::DATA_DIR_PATH, :u1)
 		assert_equal(80000, movie_data.load_data())
 	end
 
@@ -52,7 +36,7 @@ class TestMovieData < Test::Unit::TestCase
 		movie_data.popul_half_life_years = pop_half_life_years
 		# for test reasons: fix current time to 2014-01-01 00:00
 		movie_data.time_class = TestTime.new(Time.new(2014))
-		movie_data.load_data(TEST_U_DATA_FILE_PATH)
+		movie_data.load_data(TestHelper::TEST_U_DATA_FILE_PATH)
 
 		pop_base = 0.5 ** (1.0 / pop_half_life_years)
 		popularities = [1.0, 2.0, 3.0].map {|years| (pop_base ** years) * pop_half_life_years}
@@ -62,20 +46,20 @@ class TestMovieData < Test::Unit::TestCase
 	end
 
 	def test_print_real_popularity_list
-		print_header("test_print_real_popularity_list")
+		TestHelper.new.print_header("test_print_real_popularity_list")
 
 		movie_data = MovieData.new
-		movie_data.load_data(U_DATA_FILE_PATH)
+		movie_data.load_data(TestHelper::U_DATA_FILE_PATH)
 
 		list = movie_data.popularity_list
-		print_list_to_string(list, 0, 9)
+		TestHelper.new.print_list_to_string(list, 0, 9)
 		puts "..."
-		print_list_to_string(list, list.length - 10, list.length - 1)
+		TestHelper.new.print_list_to_string(list, list.length - 10, list.length - 1)
 	end
 
 	def test_user_to_user_similarity
 		movie_data = MovieData.new
-		movie_data.load_data(TEST_U_DATA_FILE_PATH)
+		movie_data.load_data(TestHelper::TEST_U_DATA_FILE_PATH)
 
 		max_user_distance = ((4 ** 2) * movie_data.all_movies.length) ** 0.5
 
@@ -85,7 +69,7 @@ class TestMovieData < Test::Unit::TestCase
 
 	def test_most_similar_on_test_data
 		movie_data = MovieData.new
-		movie_data.load_data(TEST_U_DATA_FILE_PATH)
+		movie_data.load_data(TestHelper::TEST_U_DATA_FILE_PATH)
 
 		list = movie_data.most_similar(1, 1.0)
 		assert_equal(10, list.length, "list should contain exactly 10 most similar users")
@@ -100,20 +84,20 @@ class TestMovieData < Test::Unit::TestCase
 	end
 
 	def test_most_similar_on_real_data
-		print_header("test_most_similar_on_real_data")
+		TestHelper.new.print_header("test_most_similar_on_real_data")
 
 		movie_data = MovieData.new
-		movie_data.load_data(U_DATA_FILE_PATH)
+		movie_data.load_data(TestHelper::U_DATA_FILE_PATH)
 
 		puts "the most similar users to #{movie_data.user(1)} are:"
 
 		list = movie_data.most_similar(1)
-		print_list_to_string(list, 0, list.length - 1)
+		TestHelper.new.print_list_to_string(list, 0, list.length - 1)
 	end
 
 	def test_rating
 		movie_data = MovieData.new
-		movie_data.load_data(TEST_U_DATA_FILE_PATH)
+		movie_data.load_data(TestHelper::TEST_U_DATA_FILE_PATH)
 
 		assert_equal(1, movie_data.rating(1, 1))
 		assert_equal(5, movie_data.rating(3, 2))
@@ -124,7 +108,7 @@ class TestMovieData < Test::Unit::TestCase
 
 	def test_predict
 		movie_data = MovieData.new
-		movie_data.load_data(TEST_U_DATA_FILE_PATH)
+		movie_data.load_data(TestHelper::TEST_U_DATA_FILE_PATH)
 
 		assert_equal(5, movie_data.predict(3, 2), "must return stored rating exactly")
 
