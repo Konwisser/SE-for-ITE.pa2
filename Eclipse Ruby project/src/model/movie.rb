@@ -15,6 +15,10 @@ class Movie
 		@ratings << rating_obj
 	end
 
+	def ==(other)
+		other.class == self.class && other.id == @id
+	end
+	
 	def to_s
 		"Movie(id: #{@id}, ratings: #{@ratings.length}, popularity: #{@popularity})"
 	end

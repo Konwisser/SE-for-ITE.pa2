@@ -9,7 +9,6 @@ require_relative 'test_time'
 require_relative 'test_helper'
 
 class MovieDataTest < Test::Unit::TestCase
-
 	def test_read_test_data
 		movie_data = MovieData.new
 		assert_equal(97, movie_data.load_data(TestHelper::TEST_U_DATA_FILE_PATH))
@@ -119,4 +118,31 @@ class MovieDataTest < Test::Unit::TestCase
 		# with "1" while user 2 has not rated movie 2 at all
 		assert_in_delta(1.0, movie_data.predict(2, 3, 0.79), 0.0001)
 	end
+
+	def test_movies
+		d = MovieData.new
+		d.load_data(TestHelper::TEST_U_DATA_FILE_PATH)
+
+		m1, m2, m3 = d.movie(1), d.movie(2), d.movie(3)
+
+		assert_equal([m1, m2], d.movies(2))
+		assert_equal([m1, m2, m3], d.movies(4))
+	end
+
+	def test_viewers
+		d = MovieData.new
+		d.load_data(TestHelper::TEST_U_DATA_FILE_PATH)
+
+		# should be all users from 1 to 30
+		m2viewers = d.viewers(2)
+		assert_equal(30, m2viewers.size)
+		(1..30).each {|i| assert_equal(i, m2viewers[i-1].id)}
+
+		# should be all users from 31 to 33
+		m4viewers = d.viewers(4)
+		expected = [31, 32, 33]
+		assert_equal(3, m4viewers.size)
+		(0..2).each {|i| assert_equal(expected[i], m4viewers[i].id)}
+	end
+
 end
