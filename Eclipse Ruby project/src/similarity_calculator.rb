@@ -1,3 +1,7 @@
+# Author: Georg Konwisser
+# Email: software@konwisser.de
+
+
 class SimilarityCalculator
 
 	DEFAULT_MIN_SIMILARITY = 0.86

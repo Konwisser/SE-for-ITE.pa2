@@ -1,3 +1,6 @@
+# Author: Georg Konwisser
+# Email: software@konwisser.de
+
 class TestHelper
 	
 	DATA_DIR_PATH = "data/ml-100k"

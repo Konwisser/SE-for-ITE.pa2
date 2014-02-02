@@ -5,6 +5,7 @@ require_relative 'file_parser'
 require_relative 'popularity_calculator'
 require_relative 'similarity_calculator'
 require_relative 'rating_predicter'
+require_relative 'movie_test'
 
 class MovieData
 
@@ -13,7 +14,7 @@ class MovieData
 	BASE_FILE_EXTENSION = 'base'
 	TEST_FILE_EXTENSION = 'test'
 
-	attr_writer(:time_class, :popul_half_life_years)
+	attr_writer :time_class, :popul_half_life_years
 	
 	def initialize(data_dir_path = DEFAULT_DIR_PATH, base_test_pair = nil)
 		@data_dir_path = data_dir_path
@@ -33,8 +34,6 @@ class MovieData
 		calculator = PopularityCalculator.new(@time_class, @popul_half_life_years)
 		@popularity_desc_list = calculator.insert_popularities(all_movies)
 
-		load_test_data_if_base_test_pair
-		
 		line_count
 	end
 
@@ -89,6 +88,20 @@ class MovieData
 		sim_calc = SimilarityCalculator.new(@id_to_user, all_movies.length, min_sim)
 		RatingPredicter.new(sim_calc).predict(user(user_id), movie(movie_id))
 	end
+	
+	def run_test(k, min_sim = SimilarityCalculator::DEFAULT_MIN_SIMILARITY)
+		path = "#{@data_dir_path}/#{@base_test_pair}.#{TEST_FILE_EXTENSION}"
+		pars = FileParser.new
+		pars.parse(path, k)
+		
+		sim_calc = SimilarityCalculator.new(@id_to_user, all_movies.length, min_sim)
+		pred = RatingPredicter.new(sim_calc)
+		
+		test = MovieTest.new
+		pars.ratings.each {|r| test.add_result(r, pred.predict(r.user_obj, r.movie_obj))}
+			
+		test
+	end
 
 	private
 
@@ -96,12 +109,5 @@ class MovieData
 		return file_path if !file_path.nil?
 		return "#{@data_dir_path}/#{DEFAULT_DATA_FILE}" if @base_test_pair.nil?
 		return "#{@data_dir_path}/#{@base_test_pair}.#{BASE_FILE_EXTENSION}"
-	end
-
-	def load_test_data_if_base_test_pair
-		return if @base_test_pair.nil?
-		
-		@test_data = MovieData.new
-		@test_data.load_data("#{@data_dir_path}/#{@base_test_pair}.#{TEST_FILE_EXTENSION}")
 	end
 end
