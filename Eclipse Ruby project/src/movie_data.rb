@@ -14,6 +14,7 @@ class MovieData
 	TEST_FILE_EXTENSION = 'test'
 
 	attr_writer(:time_class, :popul_half_life_years)
+	
 	def initialize(data_dir_path = DEFAULT_DIR_PATH, base_test_pair = nil)
 		@data_dir_path = data_dir_path
 		@base_test_pair = base_test_pair
@@ -21,12 +22,6 @@ class MovieData
 		@time_class = Time
 		@popul_half_life_years = 3.0
 		@popularity_desc_list = []
-	end
-
-	def complete_file_path(file_path)
-		return file_path if !file_path.nil?
-		return "#{DEFAULT_DIR_PATH}/#{DEFAULT_DATA_FILE}" if @base_test_pair.nil?
-		return "#{DEFAULT_DIR_PATH}/#{@base_test_pair}.#{BASE_FILE_EXTENSION}"
 	end
 
 	def load_data(file_path = nil)
@@ -38,6 +33,8 @@ class MovieData
 		calculator = PopularityCalculator.new(@time_class, @popul_half_life_years)
 		@popularity_desc_list = calculator.insert_popularities(all_movies)
 
+		load_test_data_if_base_test_pair
+		
 		line_count
 	end
 
@@ -83,5 +80,20 @@ class MovieData
 	def predict(user_id, movie_id, min_sim = SimilarityCalculator::DEFAULT_MIN_SIMILARITY)
 		sim_calc = SimilarityCalculator.new(@id_to_user, all_movies.length, min_sim)
 		RatingPredicter.new(sim_calc).predict(user(user_id), movie(movie_id))
+	end
+
+	private
+
+	def complete_file_path(file_path)
+		return file_path if !file_path.nil?
+		return "#{@data_dir_path}/#{DEFAULT_DATA_FILE}" if @base_test_pair.nil?
+		return "#{@data_dir_path}/#{@base_test_pair}.#{BASE_FILE_EXTENSION}"
+	end
+
+	def load_test_data_if_base_test_pair
+		return if @base_test_pair.nil?
+		
+		@test_data = MovieData.new
+		@test_data.load_data("#{@data_dir_path}/#{@base_test_pair}.#{TEST_FILE_EXTENSION}")
 	end
 end
