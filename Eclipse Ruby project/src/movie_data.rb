@@ -15,7 +15,6 @@ class MovieData
 	TEST_FILE_EXTENSION = 'test'
 
 	attr_writer :time_class, :popul_half_life_years
-	
 	def initialize(data_dir_path = DEFAULT_DIR_PATH, base_test_pair = nil)
 		@data_dir_path = data_dir_path
 		@base_test_pair = base_test_pair
@@ -48,7 +47,7 @@ class MovieData
 	def user(user_id)
 		@id_to_user[user_id]
 	end
-	
+
 	def viewers(movie_id)
 		movie(movie_id).ratings.map {|r| r.user_obj}
 	end
@@ -56,7 +55,7 @@ class MovieData
 	def movie(movie_id)
 		@id_to_movie[movie_id]
 	end
-	
+
 	def movies(user_id)
 		user(user_id).rated_movies
 	end
@@ -88,18 +87,27 @@ class MovieData
 		sim_calc = SimilarityCalculator.new(@id_to_user, all_movies.length, min_sim)
 		RatingPredicter.new(sim_calc).predict(user(user_id), movie(movie_id))
 	end
-	
+
 	def run_test(k, min_sim = SimilarityCalculator::DEFAULT_MIN_SIMILARITY)
 		path = "#{@data_dir_path}/#{@base_test_pair}.#{TEST_FILE_EXTENSION}"
 		pars = FileParser.new
 		pars.parse(path, k)
-		
+
 		sim_calc = SimilarityCalculator.new(@id_to_user, all_movies.length, min_sim)
 		pred = RatingPredicter.new(sim_calc)
-		
+
 		test = MovieTest.new
-		pars.ratings.each {|r| test.add_result(r, pred.predict(r.user_obj, r.movie_obj))}
-			
+
+		pars.ratings.each do |r|
+			# The user and movie objects from this MovieData object do not store the rating
+			# to be predicted, the objects in pars.rating do. Therefore the users and movies
+			# with the same id as the ones in rating are retrieved from this MovieData object.
+			# This ensures a fair testing.
+
+			in_db_user, in_db_movie = user(r.user_obj.id), movie(r.movie_obj.id)
+			test.add_result(r, pred.predict(in_db_user, in_db_movie))
+		end
+
 		test
 	end
 
