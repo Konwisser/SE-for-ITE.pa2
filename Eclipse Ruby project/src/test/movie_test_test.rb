@@ -50,4 +50,17 @@ class MovieTestTest < Test::Unit::TestCase
 		
 		assert_in_delta(2.16024690, test.rms(), 0.00000001)
 	end	
+	
+	def test_to_a
+		test = MovieTest.new
+		rf = RatingFactory.new
+
+		u1, m1 = User.new(1), Movie.new(1)
+		test.add_result(rf.create(u1, m1, 3, 0), 2)
+		test.add_result(rf.create(u1, m1, 2, 0), 4)
+		test.add_result(rf.create(u1, m1, 4, 0), 1)
+		
+		exp_array = [1, 1, 3, 2, 1, 1, 2, 4, 1, 1, 4, 1]
+		assert_equal(exp_array, test.to_a())
+	end
 end
