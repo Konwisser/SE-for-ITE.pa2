@@ -49,9 +49,17 @@ class MovieData
 	def user(user_id)
 		@id_to_user[user_id]
 	end
+	
+	def viewers(movie_id)
+		movie(movie_id).ratings.map {|r| r.user_obj}
+	end
 
 	def movie(movie_id)
 		@id_to_movie[movie_id]
+	end
+	
+	def movies(user_id)
+		user(user_id).rated_movies
 	end
 
 	def popularity(movie_id)

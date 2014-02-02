@@ -21,6 +21,10 @@ class User
 		@movie_to_rating_num.keys
 	end
 
+	def ==(other)
+		other.class == self.class && other.id == @id
+	end
+	
 	def to_s
 		"User(id: #{@id}, ratings: #{@movie_to_rating_num.keys.length})"
 	end
