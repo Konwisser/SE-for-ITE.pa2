@@ -30,17 +30,9 @@ class MovieData
 	# the file extensions of the test-part of a any base-test data set pair
 	TEST_FILE_EXTENSION = 'test'
 
-	# Defines the class to be used for any time related calculations (per default it
-	# is set to the Time class; changing this setting is reasonable for unit testing
-	# in order to be independent from current system time).
-	attr_writer :time_class
-
-	# Defines the exponential popularity decrease of a movie over time. More
-	# concrete it defines the movie's popularity half life in years. E.g. a value of
-	# +3+ would mean that a movie, having the popularity +1+ today, has the
-	# popularity +1/2+ after 3 years, +1/4+ after 6 years, +1/8+ after 9 years
-	# etc.
-	attr_writer :popul_half_life_years
+	# Sets the PopularityCalculator object to be used for popularity calculations in
+	# this MovieData object
+	attr_writer :pop_calc
 	# Creates a new MovieData object.
 	# data_dir_path::
 	#	optional file path to the directory containing the rated movies data set; if
@@ -53,8 +45,7 @@ class MovieData
 		@data_dir_path = data_dir_path
 		@base_test_pair = base_test_pair
 
-		@time_class = Time
-		@popul_half_life_years = 3.0
+		@pop_calc = PopularityCalculator.new()
 		@popularity_desc_list = []
 	end
 
@@ -76,8 +67,7 @@ class MovieData
 		# requires some data statistics during initialization
 		@sim_calc = SimilarityCalculator.new(self)
 
-		pop_calc = PopularityCalculator.new(@time_class, @popul_half_life_years)
-		@popularity_desc_list = pop_calc.insert_popularities(all_movies)
+		@popularity_desc_list = @pop_calc.insert_popularities(all_movies)
 
 		line_count
 	end

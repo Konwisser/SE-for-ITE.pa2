@@ -1,21 +1,21 @@
-
 require "test/unit"
 
 require_relative '../movie_data'
+require_relative '../popularity_calculator'
+
 require_relative 'eclipse_test_case_workaround'
 require_relative 'test_time'
 require_relative 'test_helper'
 
 # Author:: Georg Konwisser (mailto:software@konwisser.de)
 class MovieDataTestPopularity < Test::Unit::TestCase
-	
 	def test_popularity_calculation
 		pop_half_life_years = 3.0
 
 		movie_data = MovieData.new
-		movie_data.popul_half_life_years = pop_half_life_years
 		# for test reasons: fix current time to 2014-01-01 00:00
-		movie_data.time_class = TestTime.new(Time.new(2014))
+		time_class = TestTime.new(Time.new(2014))
+		movie_data.pop_calc = PopularityCalculator.new(time_class, pop_half_life_years)
 		movie_data.load_data(TestHelper::TEST_U_DATA_FILE_PATH)
 
 		pop_base = 0.5 ** (1.0 / pop_half_life_years)
