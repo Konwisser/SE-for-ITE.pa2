@@ -184,7 +184,7 @@ class MovieData
 	end
 
 	# Defines the minimum similarity a user A must have to a user B in order to
-	# appear in B's most_similar list.
+	# appear in the list of most similar users to B.
 	# min_sim:: a numeric value between 0.0 and 1.0
 	def min_similarity=(min_sim)
 		@sim_calc.min_sim = min_sim

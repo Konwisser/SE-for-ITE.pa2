@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class SimilarityCalculator - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>src/similarity_calculator.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-min_sim-3D">#min_sim=</a>
+    
+    <li ><a href="#method-i-most_similar">#most_similar</a>
+    
+    <li ><a href="#method-i-similarity">#similarity</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./FileParser.html">FileParser</a>
+  
+    <li><a href="./Movie.html">Movie</a>
+  
+    <li><a href="./MovieData.html">MovieData</a>
+  
+    <li><a href="./MovieDataTest.html">MovieDataTest</a>
+  
+    <li><a href="./MovieDataTestPopularity.html">MovieDataTestPopularity</a>
+  
+    <li><a href="./MovieDataTestSimilarity.html">MovieDataTestSimilarity</a>
+  
+    <li><a href="./MovieTest.html">MovieTest</a>
+  
+    <li><a href="./MovieTestTest.html">MovieTestTest</a>
+  
+    <li><a href="./PopularityCalculator.html">PopularityCalculator</a>
+  
+    <li><a href="./PredictionTestResult.html">PredictionTestResult</a>
+  
+    <li><a href="./Rating.html">Rating</a>
+  
+    <li><a href="./RatingFactory.html">RatingFactory</a>
+  
+    <li><a href="./RatingPredicter.html">RatingPredicter</a>
+  
+    <li><a href="./SimilarityCache.html">SimilarityCache</a>
+  
+    <li><a href="./SimilarityCacheTest.html">SimilarityCacheTest</a>
+  
+    <li><a href="./SimilarityCalculator.html">SimilarityCalculator</a>
+  
+    <li><a href="./Test.html">Test</a>
+  
+    <li><a href="./Test/Unit.html">Test::Unit</a>
+  
+    <li><a href="./Test/Unit/AutoRunner.html">Test::Unit::AutoRunner</a>
+  
+    <li><a href="./Test/Unit/UI.html">Test::Unit::UI</a>
+  
+    <li><a href="./TestHelper.html">TestHelper</a>
+  
+    <li><a href="./TestTime.html">TestTime</a>
+  
+    <li><a href="./User.html">User</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class SimilarityCalculator</h1>
+
+  <div id="description" class="description">
+    
+<p>This utility class is used to calculate the similarity between two users as
+well as the list of most similar users to a given user.</p>
+<dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Georg Konwisser (<a
+href="mailto:software@konwisser.de">software@konwisser.de</a>)</p>
+</dd></dl>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="DEFAULT_MIN_SIMILARITY">DEFAULT_MIN_SIMILARITY
+        
+        <dd class="description"><p>a default threshold which defines the minimum similarity a user A must have
+to user B in order to appear in the list of most similar users to B</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(movie_data, min_sim = DEFAULT_MIN_SIMILARITY)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a new <a href="SimilarityCalculator.html">SimilarityCalculator</a>
+object.</p>
+<dl class="rdoc-list note-list"><dt>movie_data
+<dd>
+<p>the <a href="MovieData.html">MovieData</a> objects which contains all the
+movie data to be calculated on</p>
+</dd><dt>min_sim
+<dd>
+<p>optional numeric value between 0.0 and 1.0 which defines the minimum
+similarity a user A must have to user B in order to appear in the list of
+most similar users to B</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File src/similarity_calculator.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">movie_data</span>, <span class="ruby-identifier">min_sim</span> = <span class="ruby-constant">DEFAULT_MIN_SIMILARITY</span>)
+        <span class="ruby-ivar">@cache</span> = <span class="ruby-constant">SimilarityCache</span>.<span class="ruby-identifier">new</span>()
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">min_sim</span> = <span class="ruby-identifier">min_sim</span>
+
+        <span class="ruby-ivar">@movie_data</span> = <span class="ruby-identifier">movie_data</span>
+        <span class="ruby-ivar">@max_user_distance</span> = (((<span class="ruby-value">5</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-operator">**</span> <span class="ruby-value">2</span>) <span class="ruby-operator">*</span> <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">all_movies</span>.<span class="ruby-identifier">length</span>) <span class="ruby-operator">**</span> <span class="ruby-value">0.5</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-min_sim-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">min_sim=</span><span
+            class="method-args">(min_sim)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Defines the minimum similarity a user A must have to a user B in order to
+appear in the list of most similar users to B.</p>
+<dl class="rdoc-list note-list"><dt>min_sim
+<dd>
+<p>a numeric value between 0.0 and 1.0</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="min_sim-3D-source">
+            <pre><span class="ruby-comment"># File src/similarity_calculator.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">min_sim=</span>(<span class="ruby-identifier">min_sim</span>)
+        <span class="ruby-ivar">@min_sim</span> = <span class="ruby-identifier">min_sim</span>
+        <span class="ruby-ivar">@cache</span>.<span class="ruby-identifier">clear_most_sim</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- min_sim-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- min_sim-3D-method -->
+
+    
+      <div id="method-i-most_similar" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">most_similar</span><span
+            class="method-args">(user_id, sort=false)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a list of users who have the most similarity to the given user.</p>
+<dl class="rdoc-list note-list"><dt>user_id
+<dd>
+<p>the numeric id of the user of interest as provided in the data set</p>
+</dd><dt>sort
+<dd>
+<p>an optional boolean setting which defines if the resulting list should be
+sorted by similarity to the given user in descending order (if
+<code>false</code> the list is not sorted at all)</p>
+</dd><dt>returns
+<dd>
+<p>a list of <a href="User.html">User</a> objects</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="most_similar-source">
+            <pre><span class="ruby-comment"># File src/similarity_calculator.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">most_similar</span>(<span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">sort</span>=<span class="ruby-keyword">false</span>)
+        <span class="ruby-identifier">user</span> = <span class="ruby-ivar">@movie_data</span>.<span class="ruby-identifier">user</span>(<span class="ruby-identifier">user_id</span>)
+        <span class="ruby-identifier">most_sim</span> = <span class="ruby-ivar">@cache</span>.<span class="ruby-identifier">get_most_sim</span>(<span class="ruby-identifier">user</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">most_sim</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">most_sim</span>.<span class="ruby-identifier">nil?</span>
+
+        <span class="ruby-ivar">@cache</span>.<span class="ruby-identifier">put_most_sim</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">calc_most_sim</span>(<span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">sort</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- most_similar-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- most_similar-method -->
+
+    
+      <div id="method-i-similarity" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">similarity</span><span
+            class="method-args">(user1_id, user2_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the similarity of two given users.</p>
+<dl class="rdoc-list note-list"><dt>user1_id
+<dd>
+<p>the numeric id of the first user as given in the data set</p>
+</dd><dt>user2_id
+<dd>
+<p>the numeric id of the second user as given in the data set</p>
+</dd><dt>returns
+<dd>
+<p>a numeric value between 0.0 and 1.0 with 1.0 as maximum similarity</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="similarity-source">
+            <pre><span class="ruby-comment"># File src/similarity_calculator.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">similarity</span>(<span class="ruby-identifier">user1_id</span>, <span class="ruby-identifier">user2_id</span>)
+        <span class="ruby-identifier">user1</span>, <span class="ruby-identifier">user2</span> = <span class="ruby-ivar">@movie_data</span>.<span class="ruby-identifier">user</span>(<span class="ruby-identifier">user1_id</span>), <span class="ruby-ivar">@movie_data</span>.<span class="ruby-identifier">user</span>(<span class="ruby-identifier">user2_id</span>)
+        <span class="ruby-identifier">sim</span> = <span class="ruby-ivar">@cache</span>.<span class="ruby-identifier">get_sim</span>(<span class="ruby-identifier">user1</span>, <span class="ruby-identifier">user2</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">sim</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">sim</span>.<span class="ruby-identifier">nil?</span>
+
+        <span class="ruby-ivar">@cache</span>.<span class="ruby-identifier">put_sim</span>(<span class="ruby-identifier">user1</span>, <span class="ruby-identifier">user2</span>, <span class="ruby-identifier">calc_similarity</span>(<span class="ruby-identifier">user1</span>,<span class="ruby-identifier">user2</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- similarity-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- similarity-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

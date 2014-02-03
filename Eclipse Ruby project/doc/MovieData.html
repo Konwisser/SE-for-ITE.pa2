@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class MovieData - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>src/movie_data.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-all_movies">#all_movies</a>
+    
+    <li ><a href="#method-i-all_users">#all_users</a>
+    
+    <li ><a href="#method-i-load_data">#load_data</a>
+    
+    <li ><a href="#method-i-min_similarity-3D">#min_similarity=</a>
+    
+    <li ><a href="#method-i-most_similar">#most_similar</a>
+    
+    <li ><a href="#method-i-movie">#movie</a>
+    
+    <li ><a href="#method-i-movies">#movies</a>
+    
+    <li ><a href="#method-i-popularity">#popularity</a>
+    
+    <li ><a href="#method-i-popularity_list">#popularity_list</a>
+    
+    <li ><a href="#method-i-predict">#predict</a>
+    
+    <li ><a href="#method-i-rating">#rating</a>
+    
+    <li ><a href="#method-i-run_test">#run_test</a>
+    
+    <li ><a href="#method-i-similarity">#similarity</a>
+    
+    <li ><a href="#method-i-user">#user</a>
+    
+    <li ><a href="#method-i-viewers">#viewers</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./FileParser.html">FileParser</a>
+  
+    <li><a href="./Movie.html">Movie</a>
+  
+    <li><a href="./MovieData.html">MovieData</a>
+  
+    <li><a href="./MovieDataTest.html">MovieDataTest</a>
+  
+    <li><a href="./MovieDataTestPopularity.html">MovieDataTestPopularity</a>
+  
+    <li><a href="./MovieDataTestSimilarity.html">MovieDataTestSimilarity</a>
+  
+    <li><a href="./MovieTest.html">MovieTest</a>
+  
+    <li><a href="./MovieTestTest.html">MovieTestTest</a>
+  
+    <li><a href="./PopularityCalculator.html">PopularityCalculator</a>
+  
+    <li><a href="./PredictionTestResult.html">PredictionTestResult</a>
+  
+    <li><a href="./Rating.html">Rating</a>
+  
+    <li><a href="./RatingFactory.html">RatingFactory</a>
+  
+    <li><a href="./RatingPredicter.html">RatingPredicter</a>
+  
+    <li><a href="./SimilarityCache.html">SimilarityCache</a>
+  
+    <li><a href="./SimilarityCacheTest.html">SimilarityCacheTest</a>
+  
+    <li><a href="./SimilarityCalculator.html">SimilarityCalculator</a>
+  
+    <li><a href="./Test.html">Test</a>
+  
+    <li><a href="./Test/Unit.html">Test::Unit</a>
+  
+    <li><a href="./Test/Unit/AutoRunner.html">Test::Unit::AutoRunner</a>
+  
+    <li><a href="./Test/Unit/UI.html">Test::Unit::UI</a>
+  
+    <li><a href="./TestHelper.html">TestHelper</a>
+  
+    <li><a href="./TestTime.html">TestTime</a>
+  
+    <li><a href="./User.html">User</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class MovieData</h1>
+
+  <div id="description" class="description">
+    
+<p>This class represents a whole movie data set with a list of movies, a list
+of users and a list of movie ratings by individual users. The <a
+href="Rating.html">Rating</a> objects store references to <a
+href="User.html">User</a> and <a href="Movie.html">Movie</a> objects which
+define the rating, the <a href="User.html">User</a> objects store
+references to all movies rated by the corresponding user and the <a
+href="Movie.html">Movie</a> objects store references to all users who rated
+the corresponding movie.</p>
+
+<p>This class also contains methods for reading in the data from files and
+calculating derived information such as movie popularity, user similarity,
+and rating predictions.</p>
+<dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Georg Konwisser (<a
+href="mailto:software@konwisser.de">software@konwisser.de</a>)</p>
+</dd></dl>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="BASE_FILE_EXTENSION">BASE_FILE_EXTENSION
+        
+        <dd class="description"><p>the file extensions of the base-part of a any base-test data set pair</p>
+        
+      
+        <dt id="DEFAULT_DATA_FILE">DEFAULT_DATA_FILE
+        
+        <dd class="description"><p>the file containing all ratings as default data source</p>
+        
+      
+        <dt id="DEFAULT_DIR_PATH">DEFAULT_DIR_PATH
+        
+        <dd class="description"><p>the default (relative) file path to the directory containing the rated
+movie data set (the path assumes the Eclipse project&#39;s root as working
+directory)</p>
+        
+      
+        <dt id="TEST_FILE_EXTENSION">TEST_FILE_EXTENSION
+        
+        <dd class="description"><p>the file extensions of the test-part of a any base-test data set pair</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-pop_calc" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">pop_calc</span><span
+            class="attribute-access-type">[W]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Sets the <a href="PopularityCalculator.html">PopularityCalculator</a>
+object to be used for popularity calculations in this <a
+href="MovieData.html">MovieData</a> object</p>
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(data_dir_path = DEFAULT_DIR_PATH, base_test_pair = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a new <a href="MovieData.html">MovieData</a> object.</p>
+<dl class="rdoc-list note-list"><dt>data_dir_path
+<dd>
+<p>optional file path to the directory containing the rated movies data set;
+if omitted <a href="MovieData.html#DEFAULT_DIR_PATH">DEFAULT_DIR_PATH</a>
+is used</p>
+</dd><dt>base_test_pair
+<dd>
+<p>optional indication of the base-test pair to be used; e.g. <code>u1</code>
+would make this object read in <code>u1.base</code> and then try to predict
+the ratings in <code>u1.test</code>; if omitted <a
+href="MovieData.html#DEFAULT_DATA_FILE">DEFAULT_DATA_FILE</a> will be read
+in from <code>data_dir_path</code></p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File src/movie_data.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">data_dir_path</span> = <span class="ruby-constant">DEFAULT_DIR_PATH</span>, <span class="ruby-identifier">base_test_pair</span> = <span class="ruby-keyword">nil</span>)
+        <span class="ruby-ivar">@data_dir_path</span> = <span class="ruby-identifier">data_dir_path</span>
+        <span class="ruby-ivar">@base_test_pair</span> = <span class="ruby-identifier">base_test_pair</span>
+
+        <span class="ruby-ivar">@pop_calc</span> = <span class="ruby-constant">PopularityCalculator</span>.<span class="ruby-identifier">new</span>()
+        <span class="ruby-ivar">@popularity_desc_list</span> = []
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-all_movies" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">all_movies</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a list of <a href="Movie.html">Movie</a> objects representing all
+movies in the read in data set.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="all_movies-source">
+            <pre><span class="ruby-comment"># File src/movie_data.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">all_movies</span>
+        <span class="ruby-ivar">@id_to_movie</span>.<span class="ruby-identifier">values</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- all_movies-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- all_movies-method -->
+
+    
+      <div id="method-i-all_users" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">all_users</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a list of <a href="User.html">User</a> objects representing all
+users in the read in data set.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="all_users-source">
+            <pre><span class="ruby-comment"># File src/movie_data.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">all_users</span>
+        <span class="ruby-ivar">@id_to_user</span>.<span class="ruby-identifier">values</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- all_users-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- all_users-method -->
+
+    
+      <div id="method-i-load_data" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">load_data</span><span
+            class="method-args">(file_path = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Reads in the data and stores references to resulting <a
+href="User.html">User</a>, <a href="Movie.html">Movie</a>, and <a
+href="Rating.html">Rating</a> objects. Also establishes corresponding
+references between these objects.</p>
+<dl class="rdoc-list note-list"><dt>file_path
+<dd>
+<p>optional file path defining the file to be read in; if omitted the
+parameters used in <a href="MovieData.html#method-c-new">::new</a>
+determine the file to be read in</p>
+</dd><dt>returns
+<dd>
+<p>the number of read in lines which should correspond to the number of
+created <a href="Rating.html">Rating</a> objects</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="load_data-source">
+            <pre><span class="ruby-comment"># File src/movie_data.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_data</span>(<span class="ruby-identifier">file_path</span> = <span class="ruby-keyword">nil</span>)
+        <span class="ruby-identifier">parser</span> = <span class="ruby-constant">FileParser</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">line_count</span> = <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">complete_file_path</span>(<span class="ruby-identifier">file_path</span>))
+        <span class="ruby-ivar">@id_to_user</span> = <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">id_to_user</span>
+        <span class="ruby-ivar">@id_to_movie</span> = <span class="ruby-identifier">parser</span>.<span class="ruby-identifier">id_to_movie</span>
+
+        <span class="ruby-comment"># can only be defined after the data is read in since the SimilarityCalculator</span>
+        <span class="ruby-comment"># requires some data statistics during initialization</span>
+        <span class="ruby-ivar">@sim_calc</span> = <span class="ruby-constant">SimilarityCalculator</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
+
+        <span class="ruby-ivar">@popularity_desc_list</span> = <span class="ruby-ivar">@pop_calc</span>.<span class="ruby-identifier">insert_popularities</span>(<span class="ruby-identifier">all_movies</span>)
+
+        <span class="ruby-identifier">line_count</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- load_data-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- load_data-method -->
+
+    
+      <div id="method-i-min_similarity-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">min_similarity=</span><span
+            class="method-args">(min_sim)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Defines the minimum similarity a user A must have to a user B in order to
+appear in the list of most similar users to B.</p>
+<dl class="rdoc-list note-list"><dt>min_sim
+<dd>
+<p>a numeric value between 0.0 and 1.0</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="min_similarity-3D-source">
+            <pre><span class="ruby-comment"># File src/movie_data.rb, line 189</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">min_similarity=</span>(<span class="ruby-identifier">min_sim</span>)
+        <span class="ruby-ivar">@sim_calc</span>.<span class="ruby-identifier">min_sim</span> = <span class="ruby-identifier">min_sim</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- min_similarity-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- min_similarity-3D-method -->
+
+    
+      <div id="method-i-most_similar" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">most_similar</span><span
+            class="method-args">(user_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a list of users who have the most similarity to the given user.</p>
+<dl class="rdoc-list note-list"><dt>user_id
+<dd>
+<p>the numeric id of the user of interest as provided in the data set</p>
+</dd><dt>returns
+<dd>
+<p>a list of <a href="User.html">User</a> objects</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="most_similar-source">
+            <pre><span class="ruby-comment"># File src/movie_data.rb, line 138</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">most_similar</span>(<span class="ruby-identifier">user_id</span>)
+        <span class="ruby-ivar">@sim_calc</span>.<span class="ruby-identifier">most_similar</span>(<span class="ruby-identifier">user_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- most_similar-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- most_similar-method -->
+
+    
+      <div id="method-i-movie" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">movie</span><span
+            class="method-args">(movie_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the <a href="Movie.html">Movie</a> object with the provided id.</p>
+<dl class="rdoc-list note-list"><dt>user_id
+<dd>
+<p>integer id of the movie to be retrieved</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="movie-source">
+            <pre><span class="ruby-comment"># File src/movie_data.rb, line 101</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">movie</span>(<span class="ruby-identifier">movie_id</span>)
+        <span class="ruby-ivar">@id_to_movie</span>[<span class="ruby-identifier">movie_id</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- movie-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- movie-method -->
+
+    
+      <div id="method-i-movies" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">movies</span><span
+            class="method-args">(user_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a list of <a href="Movie.html">Movie</a> objects representing all
+movies which have been rated by the provided user.</p>
+<dl class="rdoc-list note-list"><dt>movie_id
+<dd>
+<p>integer id of the user of interest</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="movies-source">
+            <pre><span class="ruby-comment"># File src/movie_data.rb, line 108</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">movies</span>(<span class="ruby-identifier">user_id</span>)
+        <span class="ruby-identifier">user</span>(<span class="ruby-identifier">user_id</span>).<span class="ruby-identifier">rated_movies</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- movies-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- movies-method -->
+
+    
+      <div id="method-i-popularity" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">popularity</span><span
+            class="method-args">(movie_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a numeric number indicating the popularity of a given movie - a
+bigger number means a greater popularity.</p>
+<dl class="rdoc-list note-list"><dt>movie_id
+<dd>
+<p>the numeric id of the movie of interest as provided in the data set</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="popularity-source">
+            <pre><span class="ruby-comment"># File src/movie_data.rb, line 115</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">popularity</span>(<span class="ruby-identifier">movie_id</span>)
+        <span class="ruby-identifier">movie</span>(<span class="ruby-identifier">movie_id</span>).<span class="ruby-identifier">popularity</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- popularity-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- popularity-method -->
+
+    
+      <div id="method-i-popularity_list" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">popularity_list</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a list of all known movies, sorted by popularity descending order.</p>
+<dl class="rdoc-list note-list"><dt>returns
+<dd>
+<p>a list of <a href="Movie.html">Movie</a> objects</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="popularity_list-source">
+            <pre><span class="ruby-comment"># File src/movie_data.rb, line 121</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">popularity_list</span>
+        <span class="ruby-comment"># returns a copy in order to avoid changes of this array</span>
+        <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@popularity_desc_list</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- popularity_list-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- popularity_list-method -->
+
+    
+      <div id="method-i-predict" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">predict</span><span
+            class="method-args">(user_id, movie_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Predicts the rating of the given user for the given movie based on the
+knowledge gained from the read in data set.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="predict-source">
+            <pre><span class="ruby-comment"># File src/movie_data.rb, line 152</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">predict</span>(<span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">movie_id</span>)
+        <span class="ruby-constant">RatingPredicter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@sim_calc</span>).<span class="ruby-identifier">predict</span>(<span class="ruby-identifier">user</span>(<span class="ruby-identifier">user_id</span>), <span class="ruby-identifier">movie</span>(<span class="ruby-identifier">movie_id</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- predict-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- predict-method -->
+
+    
+      <div id="method-i-rating" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">rating</span><span
+            class="method-args">(user_id, movie_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the integer rating of the given user for the given film. If no such
+rating is known <code>0</code> is returned.</p>
+<dl class="rdoc-list note-list"><dt>user_id
+<dd>
+<p>the numeric id of the user of interest as provided in the data set</p>
+</dd><dt>movie_id
+<dd>
+<p>the numeric id of the movie of interest as provided in the data set</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="rating-source">
+            <pre><span class="ruby-comment"># File src/movie_data.rb, line 146</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">rating</span>(<span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">movie_id</span>)
+        <span class="ruby-identifier">user</span>(<span class="ruby-identifier">user_id</span>).<span class="ruby-identifier">rating_num</span>(<span class="ruby-identifier">movie</span>(<span class="ruby-identifier">movie_id</span>)) <span class="ruby-operator">||</span> <span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- rating-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- rating-method -->
+
+    
+      <div id="method-i-run_test" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">run_test</span><span
+            class="method-args">(k)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Runs a prediction accuracy test where the base data set is used to predict
+the test data set. In order to run this test this <a
+href="MovieData.html">MovieData</a> object must have been initialized with
+base-test pair indication.</p>
+<dl class="rdoc-list note-list"><dt>k
+<dd>
+<p>integer value defining how many lines of the test data set should be used
+for this test</p>
+</dd><dt>returns
+<dd>
+<p>a <a href="MovieTest.html">MovieTest</a> objects containing the ideal and
+the calculated values</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="run_test-source">
+            <pre><span class="ruby-comment"># File src/movie_data.rb, line 163</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">run_test</span>(<span class="ruby-identifier">k</span>)
+        <span class="ruby-identifier">path</span> = <span class="ruby-node">&quot;#{@data_dir_path}/#{@base_test_pair}.#{TEST_FILE_EXTENSION}&quot;</span>
+        <span class="ruby-identifier">pars</span> = <span class="ruby-constant">FileParser</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">pars</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">k</span>)
+
+        <span class="ruby-identifier">pred</span> = <span class="ruby-constant">RatingPredicter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@sim_calc</span>)
+
+        <span class="ruby-identifier">test</span> = <span class="ruby-constant">MovieTest</span>.<span class="ruby-identifier">new</span>
+
+        <span class="ruby-identifier">pars</span>.<span class="ruby-identifier">ratings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
+                <span class="ruby-comment"># The user and movie objects from this MovieData object do not store the rating</span>
+                <span class="ruby-comment"># to be predicted, the objects in pars.rating do. Therefore the users and movies</span>
+                <span class="ruby-comment"># with the same id as the ones in rating are retrieved from this MovieData</span>
+                <span class="ruby-comment"># object.</span>
+                <span class="ruby-comment"># This ensures a fair testing.</span>
+
+                <span class="ruby-identifier">in_db_user</span>, <span class="ruby-identifier">in_db_movie</span> = <span class="ruby-identifier">user</span>(<span class="ruby-identifier">r</span>.<span class="ruby-identifier">user_obj</span>.<span class="ruby-identifier">id</span>), <span class="ruby-identifier">movie</span>(<span class="ruby-identifier">r</span>.<span class="ruby-identifier">movie_obj</span>.<span class="ruby-identifier">id</span>)
+                <span class="ruby-identifier">test</span>.<span class="ruby-identifier">add_result</span>(<span class="ruby-identifier">r</span>, <span class="ruby-identifier">pred</span>.<span class="ruby-identifier">predict</span>(<span class="ruby-identifier">in_db_user</span>, <span class="ruby-identifier">in_db_movie</span>))
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">test</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- run_test-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- run_test-method -->
+
+    
+      <div id="method-i-similarity" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">similarity</span><span
+            class="method-args">(user1_id, user2_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the similarity of two given users.</p>
+<dl class="rdoc-list note-list"><dt>user1_id
+<dd>
+<p>the numeric id of the first user as given in the data set</p>
+</dd><dt>user2_id
+<dd>
+<p>the numeric id of the second user as given in the data set</p>
+</dd><dt>returns
+<dd>
+<p>a numeric value between 0.0 and 1.0 with 1.0 as maximum similarity</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="similarity-source">
+            <pre><span class="ruby-comment"># File src/movie_data.rb, line 131</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">similarity</span>(<span class="ruby-identifier">user1_id</span>, <span class="ruby-identifier">user2_id</span>)
+        <span class="ruby-ivar">@sim_calc</span>.<span class="ruby-identifier">similarity</span>(<span class="ruby-identifier">user1_id</span>, <span class="ruby-identifier">user2_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- similarity-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- similarity-method -->
+
+    
+      <div id="method-i-user" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">user</span><span
+            class="method-args">(user_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the <a href="User.html">User</a> object with the provided id.</p>
+<dl class="rdoc-list note-list"><dt>user_id
+<dd>
+<p>integer id of the user to be retrieved</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="user-source">
+            <pre><span class="ruby-comment"># File src/movie_data.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">user</span>(<span class="ruby-identifier">user_id</span>)
+        <span class="ruby-ivar">@id_to_user</span>[<span class="ruby-identifier">user_id</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- user-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- user-method -->
+
+    
+      <div id="method-i-viewers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">viewers</span><span
+            class="method-args">(movie_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a list of <a href="User.html">User</a> objects representing all
+users who have rated the provided movie.</p>
+<dl class="rdoc-list note-list"><dt>movie_id
+<dd>
+<p>integer id of the movie of interest</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="viewers-source">
+            <pre><span class="ruby-comment"># File src/movie_data.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">viewers</span>(<span class="ruby-identifier">movie_id</span>)
+        <span class="ruby-identifier">movie</span>(<span class="ruby-identifier">movie_id</span>).<span class="ruby-identifier">ratings</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">user_obj</span>}
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- viewers-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- viewers-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

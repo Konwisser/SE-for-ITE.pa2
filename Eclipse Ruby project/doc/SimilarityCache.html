@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class SimilarityCache - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>src/similarity_cache.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-clear_most_sim">#clear_most_sim</a>
+    
+    <li ><a href="#method-i-get_most_sim">#get_most_sim</a>
+    
+    <li ><a href="#method-i-get_sim">#get_sim</a>
+    
+    <li ><a href="#method-i-put_most_sim">#put_most_sim</a>
+    
+    <li ><a href="#method-i-put_sim">#put_sim</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./FileParser.html">FileParser</a>
+  
+    <li><a href="./Movie.html">Movie</a>
+  
+    <li><a href="./MovieData.html">MovieData</a>
+  
+    <li><a href="./MovieDataTest.html">MovieDataTest</a>
+  
+    <li><a href="./MovieDataTestPopularity.html">MovieDataTestPopularity</a>
+  
+    <li><a href="./MovieDataTestSimilarity.html">MovieDataTestSimilarity</a>
+  
+    <li><a href="./MovieTest.html">MovieTest</a>
+  
+    <li><a href="./MovieTestTest.html">MovieTestTest</a>
+  
+    <li><a href="./PopularityCalculator.html">PopularityCalculator</a>
+  
+    <li><a href="./PredictionTestResult.html">PredictionTestResult</a>
+  
+    <li><a href="./Rating.html">Rating</a>
+  
+    <li><a href="./RatingFactory.html">RatingFactory</a>
+  
+    <li><a href="./RatingPredicter.html">RatingPredicter</a>
+  
+    <li><a href="./SimilarityCache.html">SimilarityCache</a>
+  
+    <li><a href="./SimilarityCacheTest.html">SimilarityCacheTest</a>
+  
+    <li><a href="./SimilarityCalculator.html">SimilarityCalculator</a>
+  
+    <li><a href="./Test.html">Test</a>
+  
+    <li><a href="./Test/Unit.html">Test::Unit</a>
+  
+    <li><a href="./Test/Unit/AutoRunner.html">Test::Unit::AutoRunner</a>
+  
+    <li><a href="./Test/Unit/UI.html">Test::Unit::UI</a>
+  
+    <li><a href="./TestHelper.html">TestHelper</a>
+  
+    <li><a href="./TestTime.html">TestTime</a>
+  
+    <li><a href="./User.html">User</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class SimilarityCache</h1>
+
+  <div id="description" class="description">
+    
+<p>This class is used to cache already calculated similarities between two
+users as well as the “most similar users” lists for particular users.</p>
+<dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Georg Konwisser (<a
+href="mailto:software@konwisser.de">software@konwisser.de</a>)</p>
+</dd></dl>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a new <a href="SimilarityCache.html">SimilarityCache</a> object.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File src/similarity_cache.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
+        <span class="ruby-ivar">@sim</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">hash</span>, <span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>] = {}}
+        <span class="ruby-ivar">@most_sim</span> = {}
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-clear_most_sim" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clear_most_sim</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Clears all lists of most similar users. Useful if the threshold for “is
+among the most similar users” has changed.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="clear_most_sim-source">
+            <pre><span class="ruby-comment"># File src/similarity_cache.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">clear_most_sim</span>
+        <span class="ruby-ivar">@most_sim</span> = {}
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- clear_most_sim-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- clear_most_sim-method -->
+
+    
+      <div id="method-i-get_most_sim" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_most_sim</span><span
+            class="method-args">(user)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the list of most similar users to the given user if the list is
+already stored or <code>nil</code> otherwise.</p>
+<dl class="rdoc-list note-list"><dt>user
+<dd>
+<p>a <a href="User.html">User</a> object representing the user of interest</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="get_most_sim-source">
+            <pre><span class="ruby-comment"># File src/similarity_cache.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_most_sim</span>(<span class="ruby-identifier">user</span>)
+        <span class="ruby-ivar">@most_sim</span>[<span class="ruby-identifier">user</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_most_sim-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_most_sim-method -->
+
+    
+      <div id="method-i-get_sim" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_sim</span><span
+            class="method-args">(user1, user2)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the similarity for the given two users if already stored or
+<code>nil</code> otherwise. The order of users does not matter.</p>
+<dl class="rdoc-list note-list"><dt>user1
+<dd>
+<p>a <a href="User.html">User</a> object representing one of the two users</p>
+</dd><dt>user2
+<dd>
+<p>a <a href="User.html">User</a> object representing the other user</p>
+</dd><dt>returns
+<dd>
+<p>a numeric value between 0.0 and 1.0 representing the similarity or
+<code>nil</code> if no similarity has been stored for this pair of users</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="get_sim-source">
+            <pre><span class="ruby-comment"># File src/similarity_cache.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_sim</span>(<span class="ruby-identifier">user1</span>, <span class="ruby-identifier">user2</span>)
+        <span class="ruby-identifier">user1</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">user2</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@sim</span>[<span class="ruby-identifier">user1</span>][<span class="ruby-identifier">user2</span>] <span class="ruby-operator">:</span> <span class="ruby-ivar">@sim</span>[<span class="ruby-identifier">user2</span>][<span class="ruby-identifier">user1</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_sim-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_sim-method -->
+
+    
+      <div id="method-i-put_most_sim" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">put_most_sim</span><span
+            class="method-args">(user, most_sim_users)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Stores the list of most similar users to the given user.</p>
+<dl class="rdoc-list note-list"><dt>user
+<dd>
+<p>a <a href="User.html">User</a> object representing the user of interest</p>
+</dd><dt>most_sim_users
+<dd>
+<p>list of users most similar to <code>user</code></p>
+</dd><dt>returns
+<dd>
+<p>the provided <code>most_sim_users</code> list</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="put_most_sim-source">
+            <pre><span class="ruby-comment"># File src/similarity_cache.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">put_most_sim</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">most_sim_users</span>)
+        <span class="ruby-ivar">@most_sim</span>[<span class="ruby-identifier">user</span>] = <span class="ruby-identifier">most_sim_users</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- put_most_sim-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- put_most_sim-method -->
+
+    
+      <div id="method-i-put_sim" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">put_sim</span><span
+            class="method-args">(user1, user2, sim)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Stores the similarity for the given two users. The order of users does not
+matter.</p>
+<dl class="rdoc-list note-list"><dt>user1
+<dd>
+<p>a <a href="User.html">User</a> object representing one of the two users</p>
+</dd><dt>user2
+<dd>
+<p>a <a href="User.html">User</a> object representing the other user</p>
+</dd><dt>sim
+<dd>
+<p>a numeric value between 0.0 and 1.0 representing the similarity for this
+pair of users</p>
+</dd><dt>returns
+<dd>
+<p>the provided similarity <code>sim</code></p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="put_sim-source">
+            <pre><span class="ruby-comment"># File src/similarity_cache.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">put_sim</span>(<span class="ruby-identifier">user1</span>, <span class="ruby-identifier">user2</span>, <span class="ruby-identifier">sim</span>)
+        <span class="ruby-identifier">user1</span>, <span class="ruby-identifier">user2</span> = <span class="ruby-identifier">user2</span>, <span class="ruby-identifier">user1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">user1</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user2</span>.<span class="ruby-identifier">id</span>
+        <span class="ruby-ivar">@sim</span>[<span class="ruby-identifier">user1</span>][<span class="ruby-identifier">user2</span>] = <span class="ruby-identifier">sim</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- put_sim-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- put_sim-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

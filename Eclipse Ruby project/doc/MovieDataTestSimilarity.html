@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class MovieDataTestSimilarity - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>src/test/movie_data_test_similarity.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Test::Unit::TestCase
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-i-test_most_similar_on_real_data">#test_most_similar_on_real_data</a>
+    
+    <li ><a href="#method-i-test_most_similar_on_test_data">#test_most_similar_on_test_data</a>
+    
+    <li ><a href="#method-i-test_user_to_user_similarity">#test_user_to_user_similarity</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./FileParser.html">FileParser</a>
+  
+    <li><a href="./Movie.html">Movie</a>
+  
+    <li><a href="./MovieData.html">MovieData</a>
+  
+    <li><a href="./MovieDataTest.html">MovieDataTest</a>
+  
+    <li><a href="./MovieDataTestPopularity.html">MovieDataTestPopularity</a>
+  
+    <li><a href="./MovieDataTestSimilarity.html">MovieDataTestSimilarity</a>
+  
+    <li><a href="./MovieTest.html">MovieTest</a>
+  
+    <li><a href="./MovieTestTest.html">MovieTestTest</a>
+  
+    <li><a href="./PopularityCalculator.html">PopularityCalculator</a>
+  
+    <li><a href="./PredictionTestResult.html">PredictionTestResult</a>
+  
+    <li><a href="./Rating.html">Rating</a>
+  
+    <li><a href="./RatingFactory.html">RatingFactory</a>
+  
+    <li><a href="./RatingPredicter.html">RatingPredicter</a>
+  
+    <li><a href="./SimilarityCache.html">SimilarityCache</a>
+  
+    <li><a href="./SimilarityCacheTest.html">SimilarityCacheTest</a>
+  
+    <li><a href="./SimilarityCalculator.html">SimilarityCalculator</a>
+  
+    <li><a href="./Test.html">Test</a>
+  
+    <li><a href="./Test/Unit.html">Test::Unit</a>
+  
+    <li><a href="./Test/Unit/AutoRunner.html">Test::Unit::AutoRunner</a>
+  
+    <li><a href="./Test/Unit/UI.html">Test::Unit::UI</a>
+  
+    <li><a href="./TestHelper.html">TestHelper</a>
+  
+    <li><a href="./TestTime.html">TestTime</a>
+  
+    <li><a href="./User.html">User</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class MovieDataTestSimilarity</h1>
+
+  <div id="description" class="description">
+    <dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Georg Konwisser (<a
+href="mailto:software@konwisser.de">software@konwisser.de</a>)</p>
+</dd></dl>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-test_most_similar_on_real_data" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_most_similar_on_real_data</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_most_similar_on_real_data-source">
+            <pre><span class="ruby-comment"># File src/test/movie_data_test_similarity.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_most_similar_on_real_data</span>
+        <span class="ruby-constant">TestHelper</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">print_header</span>(<span class="ruby-string">&quot;test_most_similar_on_real_data&quot;</span>)
+
+        <span class="ruby-identifier">movie_data</span> = <span class="ruby-constant">MovieData</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">load_data</span>(<span class="ruby-constant">TestHelper</span><span class="ruby-operator">::</span><span class="ruby-constant">U_DATA_FILE_PATH</span>)
+
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;the most similar users to #{movie_data.user(1)} are:&quot;</span>
+
+        <span class="ruby-identifier">list</span> = <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">most_similar</span>(<span class="ruby-value">1</span>)
+        <span class="ruby-constant">TestHelper</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">print_list_to_string</span>(<span class="ruby-identifier">list</span>, <span class="ruby-value">0</span>, <span class="ruby-identifier">list</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_most_similar_on_real_data-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_most_similar_on_real_data-method -->
+
+    
+      <div id="method-i-test_most_similar_on_test_data" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_most_similar_on_test_data</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_most_similar_on_test_data-source">
+            <pre><span class="ruby-comment"># File src/test/movie_data_test_similarity.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_most_similar_on_test_data</span>
+        <span class="ruby-identifier">movie_data</span> = <span class="ruby-constant">MovieData</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">load_data</span>(<span class="ruby-constant">TestHelper</span><span class="ruby-operator">::</span><span class="ruby-constant">TEST_U_DATA_FILE_PATH</span>)
+        <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">min_similarity</span> = <span class="ruby-value">1.0</span>
+        
+        <span class="ruby-identifier">list</span> = <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">most_similar</span>(<span class="ruby-value">1</span>)
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">10</span>, <span class="ruby-identifier">list</span>.<span class="ruby-identifier">length</span>, <span class="ruby-string">&quot;list should contain exactly 10 most similar users&quot;</span>)
+
+        <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">user_obj</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">user_obj</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">10</span>, <span class="ruby-node">&quot;user_id #{user_obj.id} is &lt; 11, shouldn&#39;t be in list&quot;</span>)
+                <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">user_obj</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">21</span>, <span class="ruby-node">&quot;user_id #{user_obj.id} is &gt; 20, shouldn&#39;t be in list&quot;</span>)
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">min_similarity</span> = <span class="ruby-value">0.86</span>
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">most_similar</span>(<span class="ruby-value">2</span>).<span class="ruby-identifier">length</span>)
+        
+        <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">min_similarity</span> = <span class="ruby-value">0.79</span>
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">11</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">most_similar</span>(<span class="ruby-value">2</span>).<span class="ruby-identifier">length</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_most_similar_on_test_data-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_most_similar_on_test_data-method -->
+
+    
+      <div id="method-i-test_user_to_user_similarity" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_user_to_user_similarity</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_user_to_user_similarity-source">
+            <pre><span class="ruby-comment"># File src/test/movie_data_test_similarity.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_user_to_user_similarity</span>
+        <span class="ruby-identifier">movie_data</span> = <span class="ruby-constant">MovieData</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">load_data</span>(<span class="ruby-constant">TestHelper</span><span class="ruby-operator">::</span><span class="ruby-constant">TEST_U_DATA_FILE_PATH</span>)
+
+        <span class="ruby-identifier">max_user_distance</span> = ((<span class="ruby-value">4</span> <span class="ruby-operator">**</span> <span class="ruby-value">2</span>) <span class="ruby-operator">*</span> <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">all_movies</span>.<span class="ruby-identifier">length</span>) <span class="ruby-operator">**</span> <span class="ruby-value">0.5</span>
+
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">similarity</span>(<span class="ruby-value">1</span>, <span class="ruby-value">2</span>), <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">similarity</span>(<span class="ruby-value">2</span>, <span class="ruby-value">1</span>))
+        <span class="ruby-identifier">assert_in_delta</span>(<span class="ruby-value">1.0</span> <span class="ruby-operator">-</span> <span class="ruby-value">2.0</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">max_user_distance</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">similarity</span>(<span class="ruby-value">1</span>, <span class="ruby-value">2</span>), <span class="ruby-value">0.0001</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_user_to_user_similarity-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_user_to_user_similarity-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

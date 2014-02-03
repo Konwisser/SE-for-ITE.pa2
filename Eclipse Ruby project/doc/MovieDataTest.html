@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class MovieDataTest - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>src/test/movie_data_test.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Test::Unit::TestCase
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-i-test_movies">#test_movies</a>
+    
+    <li ><a href="#method-i-test_predict">#test_predict</a>
+    
+    <li ><a href="#method-i-test_rating">#test_rating</a>
+    
+    <li ><a href="#method-i-test_read_real_data_base_test_pair">#test_read_real_data_base_test_pair</a>
+    
+    <li ><a href="#method-i-test_read_real_data_full">#test_read_real_data_full</a>
+    
+    <li ><a href="#method-i-test_read_test_data">#test_read_test_data</a>
+    
+    <li ><a href="#method-i-test_run_test">#test_run_test</a>
+    
+    <li ><a href="#method-i-test_viewers">#test_viewers</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./FileParser.html">FileParser</a>
+  
+    <li><a href="./Movie.html">Movie</a>
+  
+    <li><a href="./MovieData.html">MovieData</a>
+  
+    <li><a href="./MovieDataTest.html">MovieDataTest</a>
+  
+    <li><a href="./MovieDataTestPopularity.html">MovieDataTestPopularity</a>
+  
+    <li><a href="./MovieDataTestSimilarity.html">MovieDataTestSimilarity</a>
+  
+    <li><a href="./MovieTest.html">MovieTest</a>
+  
+    <li><a href="./MovieTestTest.html">MovieTestTest</a>
+  
+    <li><a href="./PopularityCalculator.html">PopularityCalculator</a>
+  
+    <li><a href="./PredictionTestResult.html">PredictionTestResult</a>
+  
+    <li><a href="./Rating.html">Rating</a>
+  
+    <li><a href="./RatingFactory.html">RatingFactory</a>
+  
+    <li><a href="./RatingPredicter.html">RatingPredicter</a>
+  
+    <li><a href="./SimilarityCache.html">SimilarityCache</a>
+  
+    <li><a href="./SimilarityCacheTest.html">SimilarityCacheTest</a>
+  
+    <li><a href="./SimilarityCalculator.html">SimilarityCalculator</a>
+  
+    <li><a href="./Test.html">Test</a>
+  
+    <li><a href="./Test/Unit.html">Test::Unit</a>
+  
+    <li><a href="./Test/Unit/AutoRunner.html">Test::Unit::AutoRunner</a>
+  
+    <li><a href="./Test/Unit/UI.html">Test::Unit::UI</a>
+  
+    <li><a href="./TestHelper.html">TestHelper</a>
+  
+    <li><a href="./TestTime.html">TestTime</a>
+  
+    <li><a href="./User.html">User</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class MovieDataTest</h1>
+
+  <div id="description" class="description">
+    <dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Georg Konwisser (<a
+href="mailto:software@konwisser.de">software@konwisser.de</a>)</p>
+</dd></dl>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-test_movies" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_movies</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_movies-source">
+            <pre><span class="ruby-comment"># File src/test/movie_data_test.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_movies</span>
+        <span class="ruby-identifier">d</span> = <span class="ruby-constant">MovieData</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">d</span>.<span class="ruby-identifier">load_data</span>(<span class="ruby-constant">TestHelper</span><span class="ruby-operator">::</span><span class="ruby-constant">TEST_U_DATA_FILE_PATH</span>)
+
+        <span class="ruby-identifier">m1</span>, <span class="ruby-identifier">m2</span>, <span class="ruby-identifier">m3</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">movie</span>(<span class="ruby-value">1</span>), <span class="ruby-identifier">d</span>.<span class="ruby-identifier">movie</span>(<span class="ruby-value">2</span>), <span class="ruby-identifier">d</span>.<span class="ruby-identifier">movie</span>(<span class="ruby-value">3</span>)
+
+        <span class="ruby-identifier">assert_equal</span>([<span class="ruby-identifier">m1</span>, <span class="ruby-identifier">m2</span>], <span class="ruby-identifier">d</span>.<span class="ruby-identifier">movies</span>(<span class="ruby-value">2</span>))
+        <span class="ruby-identifier">assert_equal</span>([<span class="ruby-identifier">m1</span>, <span class="ruby-identifier">m2</span>, <span class="ruby-identifier">m3</span>], <span class="ruby-identifier">d</span>.<span class="ruby-identifier">movies</span>(<span class="ruby-value">4</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_movies-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_movies-method -->
+
+    
+      <div id="method-i-test_predict" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_predict</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_predict-source">
+            <pre><span class="ruby-comment"># File src/test/movie_data_test.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_predict</span>
+        <span class="ruby-identifier">movie_data</span> = <span class="ruby-constant">MovieData</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">load_data</span>(<span class="ruby-constant">TestHelper</span><span class="ruby-operator">::</span><span class="ruby-constant">TEST_U_DATA_FILE_PATH</span>)
+
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">5</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">predict</span>(<span class="ruby-value">3</span>, <span class="ruby-value">2</span>), <span class="ruby-string">&quot;must return stored rating exactly&quot;</span>)
+
+        <span class="ruby-comment"># no user has similarity &gt;= 0.86 to user 2</span>
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">3</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">predict</span>(<span class="ruby-value">2</span>, <span class="ruby-value">5</span>), <span class="ruby-string">&quot;must return uncertain prediction 3&quot;</span>)
+
+        <span class="ruby-comment"># there are 11 users with similarity &gt;= 0.79 to user 2, all of them rated movie 3</span>
+        <span class="ruby-comment"># with &quot;1&quot; while user 2 has not rated movie 2 at all</span>
+        <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">min_similarity</span> = <span class="ruby-value">0.79</span>
+        <span class="ruby-identifier">assert_in_delta</span>(<span class="ruby-value">1.0</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">predict</span>(<span class="ruby-value">2</span>, <span class="ruby-value">3</span>), <span class="ruby-value">0.0001</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_predict-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_predict-method -->
+
+    
+      <div id="method-i-test_rating" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_rating</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_rating-source">
+            <pre><span class="ruby-comment"># File src/test/movie_data_test.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_rating</span>
+        <span class="ruby-identifier">movie_data</span> = <span class="ruby-constant">MovieData</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">load_data</span>(<span class="ruby-constant">TestHelper</span><span class="ruby-operator">::</span><span class="ruby-constant">TEST_U_DATA_FILE_PATH</span>)
+
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">1</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">rating</span>(<span class="ruby-value">1</span>, <span class="ruby-value">1</span>))
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">5</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">rating</span>(<span class="ruby-value">3</span>, <span class="ruby-value">2</span>))
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">3</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">rating</span>(<span class="ruby-value">33</span>, <span class="ruby-value">6</span>))
+
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">rating</span>(<span class="ruby-value">3</span>, <span class="ruby-value">7</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_rating-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_rating-method -->
+
+    
+      <div id="method-i-test_read_real_data_base_test_pair" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_read_real_data_base_test_pair</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_read_real_data_base_test_pair-source">
+            <pre><span class="ruby-comment"># File src/test/movie_data_test.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_read_real_data_base_test_pair</span>
+        <span class="ruby-identifier">movie_data</span> = <span class="ruby-constant">MovieData</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">TestHelper</span><span class="ruby-operator">::</span><span class="ruby-constant">DATA_DIR_PATH</span>, <span class="ruby-value">:u1</span>)
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">80000</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">load_data</span>())
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_read_real_data_base_test_pair-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_read_real_data_base_test_pair-method -->
+
+    
+      <div id="method-i-test_read_real_data_full" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_read_real_data_full</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_read_real_data_full-source">
+            <pre><span class="ruby-comment"># File src/test/movie_data_test.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_read_real_data_full</span>
+        <span class="ruby-identifier">movie_data</span> = <span class="ruby-constant">MovieData</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">TestHelper</span><span class="ruby-operator">::</span><span class="ruby-constant">DATA_DIR_PATH</span>)
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">100000</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">load_data</span>())
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">943</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">all_users</span>.<span class="ruby-identifier">length</span>)
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">1682</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">all_movies</span>.<span class="ruby-identifier">length</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_read_real_data_full-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_read_real_data_full-method -->
+
+    
+      <div id="method-i-test_read_test_data" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_read_test_data</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_read_test_data-source">
+            <pre><span class="ruby-comment"># File src/test/movie_data_test.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_read_test_data</span>
+        <span class="ruby-identifier">movie_data</span> = <span class="ruby-constant">MovieData</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">97</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">load_data</span>(<span class="ruby-constant">TestHelper</span><span class="ruby-operator">::</span><span class="ruby-constant">TEST_U_DATA_FILE_PATH</span>))
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">33</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">all_users</span>.<span class="ruby-identifier">length</span>)
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">6</span>, <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">all_movies</span>.<span class="ruby-identifier">length</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_read_test_data-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_read_test_data-method -->
+
+    
+      <div id="method-i-test_run_test" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_run_test</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_run_test-source">
+            <pre><span class="ruby-comment"># File src/test/movie_data_test.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_run_test</span>
+        <span class="ruby-identifier">movie_data</span> = <span class="ruby-constant">MovieData</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">TestHelper</span><span class="ruby-operator">::</span><span class="ruby-constant">DATA_DIR_PATH</span>, <span class="ruby-value">:u1</span>)
+        <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">load_data</span>()
+        <span class="ruby-identifier">test</span> = <span class="ruby-identifier">movie_data</span>.<span class="ruby-identifier">run_test</span>(<span class="ruby-value">15</span>)
+
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">15</span>, <span class="ruby-identifier">test</span>.<span class="ruby-identifier">results</span>.<span class="ruby-identifier">length</span>)
+
+        <span class="ruby-identifier">rating2</span> = <span class="ruby-identifier">test</span>.<span class="ruby-identifier">results</span>[<span class="ruby-value">1</span>]
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">1</span>, <span class="ruby-identifier">rating2</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">10</span>, <span class="ruby-identifier">rating2</span>.<span class="ruby-identifier">movie</span>.<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">3</span>, <span class="ruby-identifier">rating2</span>.<span class="ruby-identifier">rating</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_run_test-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_run_test-method -->
+
+    
+      <div id="method-i-test_viewers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">test_viewers</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="test_viewers-source">
+            <pre><span class="ruby-comment"># File src/test/movie_data_test.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">test_viewers</span>
+        <span class="ruby-identifier">d</span> = <span class="ruby-constant">MovieData</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">d</span>.<span class="ruby-identifier">load_data</span>(<span class="ruby-constant">TestHelper</span><span class="ruby-operator">::</span><span class="ruby-constant">TEST_U_DATA_FILE_PATH</span>)
+
+        <span class="ruby-comment"># should be all users from 1 to 30</span>
+        <span class="ruby-identifier">m2viewers</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">viewers</span>(<span class="ruby-value">2</span>)
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">30</span>, <span class="ruby-identifier">m2viewers</span>.<span class="ruby-identifier">size</span>)
+        (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">30</span>).<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">assert_equal</span>(<span class="ruby-identifier">i</span>, <span class="ruby-identifier">m2viewers</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">id</span>)}
+
+        <span class="ruby-comment"># should be all users from 31 to 33</span>
+        <span class="ruby-identifier">m4viewers</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">viewers</span>(<span class="ruby-value">4</span>)
+        <span class="ruby-identifier">expected</span> = [<span class="ruby-value">31</span>, <span class="ruby-value">32</span>, <span class="ruby-value">33</span>]
+        <span class="ruby-identifier">assert_equal</span>(<span class="ruby-value">3</span>, <span class="ruby-identifier">m4viewers</span>.<span class="ruby-identifier">size</span>)
+        (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>).<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">assert_equal</span>(<span class="ruby-identifier">expected</span>[<span class="ruby-identifier">i</span>], <span class="ruby-identifier">m4viewers</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">id</span>)}
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- test_viewers-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- test_viewers-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

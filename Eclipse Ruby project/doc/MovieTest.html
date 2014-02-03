@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class MovieTest - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>src/movie_test.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-add_result">#add_result</a>
+    
+    <li ><a href="#method-i-mean">#mean</a>
+    
+    <li ><a href="#method-i-rms">#rms</a>
+    
+    <li ><a href="#method-i-stddev">#stddev</a>
+    
+    <li ><a href="#method-i-to_a">#to_a</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./FileParser.html">FileParser</a>
+  
+    <li><a href="./Movie.html">Movie</a>
+  
+    <li><a href="./MovieData.html">MovieData</a>
+  
+    <li><a href="./MovieDataTest.html">MovieDataTest</a>
+  
+    <li><a href="./MovieDataTestPopularity.html">MovieDataTestPopularity</a>
+  
+    <li><a href="./MovieDataTestSimilarity.html">MovieDataTestSimilarity</a>
+  
+    <li><a href="./MovieTest.html">MovieTest</a>
+  
+    <li><a href="./MovieTestTest.html">MovieTestTest</a>
+  
+    <li><a href="./PopularityCalculator.html">PopularityCalculator</a>
+  
+    <li><a href="./PredictionTestResult.html">PredictionTestResult</a>
+  
+    <li><a href="./Rating.html">Rating</a>
+  
+    <li><a href="./RatingFactory.html">RatingFactory</a>
+  
+    <li><a href="./RatingPredicter.html">RatingPredicter</a>
+  
+    <li><a href="./SimilarityCache.html">SimilarityCache</a>
+  
+    <li><a href="./SimilarityCacheTest.html">SimilarityCacheTest</a>
+  
+    <li><a href="./SimilarityCalculator.html">SimilarityCalculator</a>
+  
+    <li><a href="./Test.html">Test</a>
+  
+    <li><a href="./Test/Unit.html">Test::Unit</a>
+  
+    <li><a href="./Test/Unit/AutoRunner.html">Test::Unit::AutoRunner</a>
+  
+    <li><a href="./Test/Unit/UI.html">Test::Unit::UI</a>
+  
+    <li><a href="./TestHelper.html">TestHelper</a>
+  
+    <li><a href="./TestTime.html">TestTime</a>
+  
+    <li><a href="./User.html">User</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class MovieTest</h1>
+
+  <div id="description" class="description">
+    
+<p>This class contains all results of a rating prediction accuracy test and
+provides statistical methods such as mean error or error standard
+deviation.</p>
+<dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Georg Konwisser (<a
+href="mailto:software@konwisser.de">software@konwisser.de</a>)</p>
+</dd></dl>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-results" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">results</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>a lits of <a href="PredictionTestResult.html">PredictionTestResult</a>
+objects each representing the real and the calculated (predicted) rating
+for a given user-movie pair</p>
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a new <a href="MovieTest.html">MovieTest</a> object.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File src/movie_test.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
+        <span class="ruby-ivar">@results</span> = []
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-add_result" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add_result</span><span
+            class="method-args">(rating_obj, pred_rating)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Adds a new rating prediction test result.</p>
+<dl class="rdoc-list note-list"><dt>rating_obj
+<dd>
+<p><a href="Rating.html">Rating</a> object containing the real (ideal) rating
+of the contained user-movie pair</p>
+</dd><dt>pred_rating
+<dd>
+<p>the predicted rating to be compared against the real one</p>
+</dd></dl>
+          
+          
+
+          
+          <div class="method-source-code" id="add_result-source">
+            <pre><span class="ruby-comment"># File src/movie_test.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_result</span>(<span class="ruby-identifier">rating_obj</span>, <span class="ruby-identifier">pred_rating</span>)
+        <span class="ruby-ivar">@results</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">PredictionTestResult</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">rating_obj</span>, <span class="ruby-identifier">pred_rating</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- add_result-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- add_result-method -->
+
+    
+      <div id="method-i-mean" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">mean</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Calculates the mean error of all previously added prediction test results.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="mean-source">
+            <pre><span class="ruby-comment"># File src/movie_test.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">mean</span>
+        <span class="ruby-identifier">error_sum</span> = <span class="ruby-ivar">@results</span>.<span class="ruby-identifier">reduce</span>(<span class="ruby-value">0.0</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">sum</span>, <span class="ruby-identifier">r</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">r</span>.<span class="ruby-identifier">rating</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">pred_rating</span>).<span class="ruby-identifier">abs</span>}
+        <span class="ruby-identifier">error_sum</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@results</span>.<span class="ruby-identifier">length</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- mean-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- mean-method -->
+
+    
+      <div id="method-i-rms" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">rms</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Calculates the root mean square error of all previously added prediction
+test results.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="rms-source">
+            <pre><span class="ruby-comment"># File src/movie_test.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">rms</span>
+        <span class="ruby-identifier">errors</span> = <span class="ruby-ivar">@results</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span> (<span class="ruby-identifier">r</span>.<span class="ruby-identifier">rating</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">pred_rating</span>).<span class="ruby-identifier">abs</span>}
+        <span class="ruby-identifier">sq_sum</span> = <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">reduce</span>(<span class="ruby-value">0.0</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">sum</span>, <span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">e</span> <span class="ruby-operator">**</span><span class="ruby-value">2</span>}
+        (<span class="ruby-identifier">sq_sum</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">length</span>) <span class="ruby-operator">**</span> <span class="ruby-value">0.5</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- rms-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- rms-method -->
+
+    
+      <div id="method-i-stddev" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">stddev</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Calculates the error standard deviation of all previously added prediction
+test results.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="stddev-source">
+            <pre><span class="ruby-comment"># File src/movie_test.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">stddev</span>
+        <span class="ruby-identifier">cur_mean</span> = <span class="ruby-identifier">mean</span>()
+        <span class="ruby-identifier">errors</span> = <span class="ruby-ivar">@results</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span> (<span class="ruby-identifier">r</span>.<span class="ruby-identifier">rating</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">pred_rating</span>).<span class="ruby-identifier">abs</span>}
+        <span class="ruby-identifier">sq_dif_sum</span> = <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">reduce</span>(<span class="ruby-value">0.0</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">sum</span>, <span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">e</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">cur_mean</span>)<span class="ruby-operator">**</span><span class="ruby-value">2</span>}
+        (<span class="ruby-identifier">sq_dif_sum</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">length</span>) <span class="ruby-operator">**</span> <span class="ruby-value">0.5</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- stddev-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- stddev-method -->
+
+    
+      <div id="method-i-to_a" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_a</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns all previously added prediction test results as a list. The format
+of the list is [user_id1, movie_id1, real_rating1, predicted_rating1,
+user_id2, movie_id2, real_rating2, predicted_rating2, user_id3, …]</p>
+          
+          
+
+          
+          <div class="method-source-code" id="to_a-source">
+            <pre><span class="ruby-comment"># File src/movie_test.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_a</span>
+        <span class="ruby-identifier">result</span> = []
+        <span class="ruby-ivar">@results</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>
+                <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">movie</span>.<span class="ruby-identifier">id</span>
+                <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">rating</span>
+                <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">pred_rating</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_a-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_a-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

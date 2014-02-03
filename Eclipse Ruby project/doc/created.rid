@@ -1,0 +1,24 @@
+Mon, 03 Feb 2014 18:27:42 -0500
+src/file_parser.rb	Sun, 02 Feb 2014 21:39:21 -0500
+src/mock.rb	Sun, 02 Feb 2014 17:12:09 -0500
+src/model/movie.rb	Sun, 02 Feb 2014 21:37:28 -0500
+src/model/prediction_test_result.rb	Sun, 02 Feb 2014 18:03:38 -0500
+src/model/rating.rb	Sun, 02 Feb 2014 21:37:56 -0500
+src/model/user.rb	Sun, 02 Feb 2014 21:38:25 -0500
+src/movie_data.rb	Mon, 03 Feb 2014 18:19:27 -0500
+src/movie_test.rb	Mon, 03 Feb 2014 15:22:35 -0500
+src/popularity_calculator.rb	Mon, 03 Feb 2014 16:46:09 -0500
+src/prediction_scores.rb	Sun, 02 Feb 2014 17:13:13 -0500
+src/rating_factory.rb	Mon, 03 Feb 2014 17:58:59 -0500
+src/rating_predicter.rb	Mon, 03 Feb 2014 18:04:14 -0500
+src/similarity_cache.rb	Mon, 03 Feb 2014 18:16:18 -0500
+src/similarity_calculator.rb	Mon, 03 Feb 2014 18:27:06 -0500
+src/test/eclipse_test_case_workaround.rb	Sun, 02 Feb 2014 17:09:36 -0500
+src/test/movie_data_test.rb	Mon, 03 Feb 2014 15:43:34 -0500
+src/test/movie_data_test_popularity.rb	Mon, 03 Feb 2014 16:36:42 -0500
+src/test/movie_data_test_similarity.rb	Mon, 03 Feb 2014 15:43:19 -0500
+src/test/movie_test_test.rb	Sun, 02 Feb 2014 17:11:14 -0500
+src/test/run_all_tests.rb	Sun, 02 Feb 2014 17:11:23 -0500
+src/test/similarity_cache_test.rb	Sun, 02 Feb 2014 17:11:34 -0500
+src/test/test_helper.rb	Sun, 02 Feb 2014 17:11:43 -0500
+src/test/test_time.rb	Sun, 02 Feb 2014 17:11:52 -0500
