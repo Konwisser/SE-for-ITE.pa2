@@ -1,11 +1,9 @@
-# Author: Georg Konwisser
-# Email: software@konwisser.de
-
 require_relative 'eclipse_test_case_workaround.rb'
 
 require_relative '../similarity_cache'
 require_relative '../model/user'
 
+# Author:: Georg Konwisser (mailto:software@konwisser.de)
 class SimilarityCacheTest < Test::Unit::TestCase
 	def test_get_sim
 		cache = SimilarityCache.new()

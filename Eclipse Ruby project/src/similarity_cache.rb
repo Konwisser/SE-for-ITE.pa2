@@ -1,6 +1,4 @@
-# Author: Georg Konwisser
-# Email: software@konwisser.de
-
+# Author:: Georg Konwisser (mailto:software@konwisser.de)
 class SimilarityCache
 	def initialize
 		@sim = Hash.new {|hash, key| hash[key] = {}}
@@ -24,5 +22,9 @@ class SimilarityCache
 	# returns the provided most_sim_users list
 	def put_most_sim(user, most_sim_users)
 		@most_sim[user] = most_sim_users
+	end
+	
+	def clear_most_sim
+		@most_sim = {}
 	end
 end

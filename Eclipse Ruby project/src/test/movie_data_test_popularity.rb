@@ -1,5 +1,3 @@
-# Author: Georg Konwisser
-# Email: software@konwisser.de
 
 require "test/unit"
 
@@ -8,6 +6,7 @@ require_relative 'eclipse_test_case_workaround'
 require_relative 'test_time'
 require_relative 'test_helper'
 
+# Author:: Georg Konwisser (mailto:software@konwisser.de)
 class MovieDataTestPopularity < Test::Unit::TestCase
 	
 	def test_popularity_calculation

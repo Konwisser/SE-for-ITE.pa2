@@ -1,7 +1,6 @@
-# Author: Georg Konwisser
-# Email: software@konwisser.de
-
-#compat mixin for Ruby 1.9.1 with test-unit gem in Eclipse (workaround for
+# Author:: Georg Konwisser (mailto:software@konwisser.de)
+#
+# compat mixin for Ruby 1.9.1 with test-unit gem in Eclipse (workaround for
 # missing variable initialization in eclipse thankfully taken from
 # https://bugs.eclipse.org/bugs/show_bug.cgi?id=323736)
 module Test

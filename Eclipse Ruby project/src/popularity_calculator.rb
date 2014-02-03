@@ -1,6 +1,4 @@
-# Author: Georg Konwisser
-# Email: software@konwisser.de
-
+# Author:: Georg Konwisser (mailto:software@konwisser.de)
 class PopularityCalculator	
 	SECONDS_IN_YEAR = 3600.0 * 24.0 * 365.25
 	

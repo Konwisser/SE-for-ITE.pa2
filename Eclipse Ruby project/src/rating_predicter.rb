@@ -1,6 +1,4 @@
-# Author: Georg Konwisser
-# Email: software@konwisser.de
-
+# Author:: Georg Konwisser (mailto:software@konwisser.de)
 class RatingPredicter
 	def initialize(similarity_calculator)
 		@sim_calc = similarity_calculator

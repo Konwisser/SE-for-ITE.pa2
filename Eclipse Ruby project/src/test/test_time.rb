@@ -1,6 +1,4 @@
-# Author: Georg Konwisser
-# Email: software@konwisser.de
-
+# Author:: Georg Konwisser (mailto:software@konwisser.de)
 class TestTime < Time
 	def initialize(now_time)
 		@now_time = now_time

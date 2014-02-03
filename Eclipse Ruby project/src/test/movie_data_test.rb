@@ -1,6 +1,3 @@
-# Author: Georg Konwisser
-# Email: software@konwisser.de
-
 require "test/unit"
 
 require_relative '../movie_data'
@@ -8,6 +5,7 @@ require_relative 'eclipse_test_case_workaround'
 require_relative 'test_time'
 require_relative 'test_helper'
 
+# Author:: Georg Konwisser (mailto:software@konwisser.de)
 class MovieDataTest < Test::Unit::TestCase
 	def test_read_test_data
 		movie_data = MovieData.new
@@ -50,7 +48,8 @@ class MovieDataTest < Test::Unit::TestCase
 
 		# there are 11 users with similarity >= 0.79 to user 2, all of them rated movie 3
 		# with "1" while user 2 has not rated movie 2 at all
-		assert_in_delta(1.0, movie_data.predict(2, 3, 0.79), 0.0001)
+		movie_data.min_similarity = 0.79
+		assert_in_delta(1.0, movie_data.predict(2, 3), 0.0001)
 	end
 
 	def test_movies
@@ -85,7 +84,7 @@ class MovieDataTest < Test::Unit::TestCase
 		test = movie_data.run_test(15)
 
 		assert_equal(15, test.results.length)
-		
+
 		rating2 = test.results[1]
 		assert_equal(1, rating2.user.id)
 		assert_equal(10, rating2.movie.id)

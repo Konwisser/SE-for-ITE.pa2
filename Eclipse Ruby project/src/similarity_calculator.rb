@@ -1,34 +1,39 @@
-# Author: Georg Konwisser
-# Email: software@konwisser.de
-
 require_relative 'similarity_cache'
 
+# Author:: Georg Konwisser (mailto:software@konwisser.de)
 class SimilarityCalculator
 
 	DEFAULT_MIN_SIMILARITY = 0.86
-	def initialize(id_to_user, movies_count, min_sim = DEFAULT_MIN_SIMILARITY)
-		@id_to_user = id_to_user
-		@max_user_distance = (((5 - 1) ** 2) * movies_count) ** 0.5
-		@min_sim = min_sim
+	def initialize(movie_data, min_sim = DEFAULT_MIN_SIMILARITY)
 		@cache = SimilarityCache.new()
+		self.min_sim = min_sim
+
+		@movie_data = movie_data
+		@max_user_distance = (((5 - 1) ** 2) * movie_data.all_movies.length) ** 0.5
+	end
+
+	# Defines the minimum similarity a user A must have to a user B in order to
+	# appear in B's most_similar list.
+	# min_sim:: a numeric value between 0.0 and 1.0
+	def min_sim=(min_sim)
+		@min_sim = min_sim
+		@cache.clear_most_sim
 	end
 
 	def similarity(user1_id, user2_id)
-		user1, user2 = @id_to_user[user1_id], @id_to_user[user2_id]
+		user1, user2 = @movie_data.user(user1_id), @movie_data.user(user2_id)
 		sim = @cache.get_sim(user1, user2)
 		return sim if !sim.nil?
 
 		@cache.put_sim(user1, user2, calc_similarity(user1,user2))
 	end
 
-	# TODO remove the option to enter another min_sim then defined in this object via
-	# @min_sim
-	def most_similar(user_id, min_sim = @min_sim, sort=false)
-		user = @id_to_user[user_id]
+	def most_similar(user_id, sort=false)
+		user = @movie_data.user(user_id)
 		most_sim = @cache.get_most_sim(user)
 		return most_sim if !most_sim.nil?
 
-		@cache.put_most_sim(user, calc_most_sim(user_id,min_sim,sort))
+		@cache.put_most_sim(user, calc_most_sim(user_id, sort))
 	end
 
 	private
@@ -59,11 +64,11 @@ class SimilarityCalculator
 		1.0 - distance / @max_user_distance
 	end
 
-	def calc_most_sim(user_id, min_sim, sort)
+	def calc_most_sim(user_id, sort)
 		filtered = {}
-		@id_to_user.values.each do |u|
+		@movie_data.all_users.each do |u|
 			sim = similarity(user_id, u.id)
-			filtered[u] = sim if u.id != user_id && sim >= min_sim
+			filtered[u] = sim if u.id != user_id && sim >= @min_sim
 		end
 
 		# sort the matching users in descending order regarding their requested

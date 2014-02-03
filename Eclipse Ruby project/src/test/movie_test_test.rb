@@ -1,6 +1,3 @@
-# Author: Georg Konwisser
-# Email: software@konwisser.de
-
 require_relative '../movie_data'
 require_relative '../movie_test'
 require_relative '../rating_factory'
@@ -10,6 +7,7 @@ require_relative '../model/movie'
 
 require_relative 'eclipse_test_case_workaround'
 
+# Author:: Georg Konwisser (mailto:software@konwisser.de)
 class MovieTestTest < Test::Unit::TestCase
 	def test_mean
 		test = MovieTest.new

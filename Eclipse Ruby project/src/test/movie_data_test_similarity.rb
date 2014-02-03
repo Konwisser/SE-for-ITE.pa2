@@ -1,5 +1,4 @@
-# Author: Georg Konwisser
-# Email: software@konwisser.de
+# Author:: Georg Konwisser (mailto:software@konwisser.de)
 
 require "test/unit"
 
@@ -8,6 +7,7 @@ require_relative 'eclipse_test_case_workaround'
 require_relative 'test_time'
 require_relative 'test_helper'
 
+# Author:: Georg Konwisser (mailto:software@konwisser.de)
 class MovieDataTestSimilarity < Test::Unit::TestCase
 	def test_user_to_user_similarity
 		movie_data = MovieData.new
@@ -22,8 +22,9 @@ class MovieDataTestSimilarity < Test::Unit::TestCase
 	def test_most_similar_on_test_data
 		movie_data = MovieData.new
 		movie_data.load_data(TestHelper::TEST_U_DATA_FILE_PATH)
-
-		list = movie_data.most_similar(1, 1.0)
+		movie_data.min_similarity = 1.0
+		
+		list = movie_data.most_similar(1)
 		assert_equal(10, list.length, "list should contain exactly 10 most similar users")
 
 		list.each do |user_obj|
@@ -31,8 +32,11 @@ class MovieDataTestSimilarity < Test::Unit::TestCase
 			assert(user_obj.id < 21, "user_id #{user_obj.id} is > 20, shouldn't be in list")
 		end
 
-		assert_equal(0, movie_data.most_similar(2, 0.86).length)
-		assert_equal(11, movie_data.most_similar(2, 0.79).length)
+		movie_data.min_similarity = 0.86
+		assert_equal(0, movie_data.most_similar(2).length)
+		
+		movie_data.min_similarity = 0.79
+		assert_equal(11, movie_data.most_similar(2).length)
 	end
 
 	def test_most_similar_on_real_data

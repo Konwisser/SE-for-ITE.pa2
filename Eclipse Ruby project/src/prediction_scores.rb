@@ -1,5 +1,4 @@
-# Author: Georg Konwisser
-# Email: software@konwisser.de
+# Author:: Georg Konwisser (mailto:software@konwisser.de)
 
 require_relative 'movie_data'
 
